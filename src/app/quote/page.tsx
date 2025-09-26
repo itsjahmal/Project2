@@ -1,13 +1,13 @@
 
+'use client';
+
 import { Suspense } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { QuoteForm } from './_components/quote-form';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'Request a Free Quote - Atlanta Moving & Cleaning',
-  description: 'Get a free, no-obligation quote for your moving or cleaning needs in the Metro Atlanta area. Fill out our form for a fast response.',
-};
+// Metadata can't be in a client component, so we keep the page structure this way.
+// The actual page content will be in a client component.
 
 function QuotePageContent() {
   return (
@@ -31,6 +31,7 @@ function QuotePageContent() {
               </CardDescription>
             </CardHeader>
             <CardContent>
+              {/* QuoteForm is already a client component, so it's fine here */}
               <QuoteForm />
             </CardContent>
           </Card>
@@ -40,7 +41,8 @@ function QuotePageContent() {
   );
 }
 
-export default function QuotePage() {
+// We wrap the client content in a parent component that can handle suspense.
+export default function QuotePageWrapper() {
   return (
     <Suspense>
       <QuotePageContent />
