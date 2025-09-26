@@ -1,3 +1,46 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "heroSkyline",
+      "description": "Atlanta skyline at dusk",
+      "imageUrl": "https://images.unsplash.com/photo-1634010727710-aeef03fa4cba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxBdGxhbnRhJTIwc2t5bGluZXxlbnwwfHx8fDE3NTg4OTE2OTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Atlanta skyline"
+    },
+    {
+      "id": "serviceMoving",
+      "description": "Moving truck and boxes",
+      "imageUrl": "https://images.unsplash.com/photo-1600518464441-9154a4dea21b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb3ZpbmclMjB0cnVja3xlbnwwfHx8fDE3NTg3OTYyNDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "moving truck"
+    },
+    {
+      "id": "serviceCleaning",
+      "description": "Person cleaning a modern kitchen",
+      "imageUrl": "https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjbGVhbmluZyUyMHNlcnZpY2V8ZW58MHx8fHwxNzU4ODEyMTIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cleaning service"
+    },
+    {
+      "id": "aboutStory",
+      "description": "Portrait of a friendly team",
+      "imageUrl": "https://images.unsplash.com/photo-1758518729371-5ee28c4ddf60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxmcmllbmRseSUyMHRlYW18ZW58MHx8fHwxNzU4ODkxNjk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "friendly team"
+    },
+    {
+      "id": "avatar1",
+      "description": "Avatar of a smiling customer",
+      "imageUrl": "https://images.unsplash.com/photo-1624486217002-846e654ac969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVyc29uJTIwc21pbGluZ3xlbnwwfHx8fDE3NTg3OTQzNjl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person smiling"
+    },
+    {
+      "id": "avatar2",
+      "description": "Avatar of a happy client",
+      "imageUrl": "https://images.unsplash.com/photo-1579047917338-a6a69144fe63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxoYXBweSUyMHBlcnNvbnxlbnwwfHx8fDE3NTg3OTEzNjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "happy person"
+    },
+    {
+      "id": "avatar3",
+      "description": "Avatar of a satisfied customer",
+      "imageUrl": "https://images.unsplash.com/photo-1690687505782-b7cc62530e0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9maWxlJTIwcGljdHVyZXxlbnwwfHx8fDE3NTg4MzMwMDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "profile picture"
+    }
+  ]
 }
