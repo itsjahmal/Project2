@@ -142,7 +142,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Moving & Courier Services Section */}
-      <section className="py-16 md:py-24">
+      <section id="moving-services" className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">{movingServices.title}</h2>
@@ -169,7 +169,7 @@ export default function ServicesPage() {
       </div>
 
       {/* Cleaning Services Section */}
-      <section className="py-16 md:py-24">
+      <section id="cleaning-services" className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">{cleaningServices.title}</h2>
