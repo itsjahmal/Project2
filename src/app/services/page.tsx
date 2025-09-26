@@ -53,7 +53,7 @@ const movingServices = {
 };
 
 const cleaningServices = {
-  title: "Atlanta Cleaning Services",
+  title: "MoeMoe Cleaning Services",
   categories: [
     {
       name: "Residential Cleaning",
