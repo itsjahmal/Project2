@@ -6,9 +6,9 @@ export const SITE_CONFIG = {
   address: 'Metro Atlanta, GA',
   copyright: `© ${new Date().getFullYear()} MoeMoe Enterprises LLC. All rights reserved.`,
   socialLinks: {
-    facebook: '#',
-    instagram: '#',
-    twitter: '#',
+    facebook: 'https://facebook.com/moemoemovers',
+    instagram: 'https://instagram.com/moemoemovers',
+    twitter: 'https://twitter.com/moemoemovers',
   },
   navLinks: [
     { name: 'Home', href: '/' },
