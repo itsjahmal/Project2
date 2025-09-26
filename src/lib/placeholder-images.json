@@ -25,6 +25,66 @@
       "imageHint": "friendly team"
     },
     {
+      "id": "medicalCourier",
+      "description": "A medical professional handling a specimen box.",
+      "imageUrl": "https://images.unsplash.com/photo-1676552055618-22ec8cde399a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwY291cmllcnxlbnwwfHx8fDE3NTg4OTMwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "medical courier"
+    },
+    {
+      "id": "legalCourier",
+      "description": "A person signing a legal document.",
+      "imageUrl": "https://images.unsplash.com/photo-1619418602850-35ad20aa1700?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxsZWdhbCUyMGRvY3VtZW50fGVufDB8fHx8MTc1ODgwMjY0OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "legal document"
+    },
+    {
+      "id": "businessCourier",
+      "description": "An office worker receiving a package.",
+      "imageUrl": "https://images.unsplash.com/photo-1588894123111-01fc7864f37c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YnVzaW5lc3MlMjBkZWxpdmVyeXxlbnwwfHx8fDE3NTg4OTMwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business delivery"
+    },
+    {
+      "id": "generalMoving",
+      "description": "Movers carrying a couch.",
+      "imageUrl": "https://images.unsplash.com/photo-1600725935160-f67ee4f6084a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtb3ZlcnMlMjBmdXJuaXR1cmV8ZW58MHx8fHwxNzU4ODkzMDIzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "movers furniture"
+    },
+    {
+      "id": "internationalShipping",
+      "description": "A cargo plane being loaded with packages.",
+      "imageUrl": "https://images.unsplash.com/photo-1623699316763-ed3bba0ba85e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjYXJnbyUyMHBsYW5lfGVufDB8fHx8MTc1ODg5MzAyNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cargo plane"
+    },
+    {
+      "id": "residentialCleaning",
+      "description": "A clean and tidy living room.",
+      "imageUrl": "https://images.unsplash.com/photo-1583270042600-6283b25e1b8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjbGVhbiUyMGxpdmluZ3Jvb218ZW58MHx8fHwxNzU4ODkzMDIzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "clean livingroom"
+    },
+    {
+      "id": "commercialCleaning",
+      "description": "A sparkling clean office space.",
+      "imageUrl": "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjbGVhbiUyMG9mZmljZXxlbnwwfHx8fDE3NTg4OTMwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "clean office"
+    },
+    {
+      "id": "specialtyCleaning",
+      "description": "Someone deep cleaning a carpet.",
+      "imageUrl": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjYXJwZXQlMjBjbGVhbmluZ3xlbnwwfHx8fDE3NTg4MDE5MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "carpet cleaning"
+    },
+    {
+      "id": "eventCleaning",
+      "description": "Cleaning up after a large party or event.",
+      "imageUrl": "https://images.unsplash.com/photo-1743360170497-d1ee8c62da4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxldmVudCUyMGNsZWFudXB8ZW58MHx8fHwxNzU4ODkzMDIzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "event cleanup"
+    },
+    {
+      "id": "sanitizationServices",
+      "description": "A professional in protective gear disinfecting a room.",
+      "imageUrl": "https://images.unsplash.com/photo-1584695930355-f3dd455d6332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkaXNpbmZlY3Rpb24lMjBzZXJ2aWNlfGVufDB8fHx8MTc1ODg5MzAyNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "disinfection service"
+    },
+    {
       "id": "avatar1",
       "description": "Avatar of a smiling customer",
       "imageUrl": "https://images.unsplash.com/photo-1624486217002-846e654ac969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVyc29uJTIwc21pbGluZ3xlbnwwfHx8fDE3NTg3OTQzNjl8MA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -39,7 +99,7 @@
     {
       "id": "avatar3",
       "description": "Avatar of a satisfied customer",
-      "imageUrl": "https://images.unsplash.com/photo-1690687505782-b7cc62530e0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9maWxlJTIwcGljdHVyZXxlbnwwfHx8fDE3NTg4MzMwMDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1690688750578-b7cc62530e0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9maWxlJTIwcGljdHVyZXxlbnwwfHx8fDE3NTg4MzMwMDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "profile picture"
     }
   ]
