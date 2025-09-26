@@ -3,7 +3,7 @@
     {
       "id": "heroSkyline",
       "description": "Atlanta skyline",
-      "imageUrl": "https://i.imgur.com/P6Nomhx.jpeg",
+      "imageUrl": "https://i.imgur.com/yv4A8GD.jpeg",
       "imageHint": "Atlanta skyline"
     },
     {
@@ -39,7 +39,7 @@
     {
       "id": "businessCourier",
       "description": "An office worker receiving a package.",
-      "imageUrl": "https://images.unsplash.com/photo-1588894123111-01fc7864f37c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YnVzaW5lc3MlMjBkZWxpdmVyeXxlbnwwfHx8fDE3NTg4OTMwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1588894123111-01fc7864f37c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YnVzaW5lc3MlMjBkZWxpdmVyeXxlbnwwfHx8fDE3NTg4OTMwMjN8MA&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "business delivery"
     },
     {
@@ -63,43 +63,43 @@
     {
       "id": "commercialCleaning",
       "description": "A sparkling clean office space.",
-      "imageUrl": "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjbGVhbiUyMG9mZmljZXxlbnwwfHx8fDE3NTg4OTMwMjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjbGVhbiUyMG9mZmljZXxlbnwwfHx8fDE3NTg4OTMwMjN8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "clean office"
     },
     {
       "id": "specialtyCleaning",
       "description": "Someone deep cleaning a carpet.",
-      "imageUrl": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjYXJwZXQlMjBjbGVhbmluZ3xlbnwwfHx8fDE3NTg4MDE5MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjYXJwZXQlMjBjbGVhbmluZ3xlbnwwfHx8fDE3NTg4MDE5MDB8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "carpet cleaning"
     },
     {
       "id": "eventCleaning",
       "description": "Cleaning up after a large party or event.",
-      "imageUrl": "https://images.unsplash.com/photo-1743360170497-d1ee8c62da4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxldmVudCUyMGNsZWFudXB8ZW58MHx8fHwxNzU4ODkzMDIzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1743360170497-d1ee8c62da4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxldmVudCUyMGNsZWFudXB8ZW58MHx8fHwxNzU4ODkzMDIzfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "event cleanup"
     },
     {
       "id": "sanitizationServices",
       "description": "A professional in protective gear disinfecting a room.",
-      "imageUrl": "https://images.unsplash.com/photo-1584695930355-f3dd455d6332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkaXNpbmZlY3Rpb24lMjBzZXJ2aWNlfGVufDB8fHx8MTc1ODg5MzAyNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1584695930355-f3dd455d6332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkaXNpbmZlY3Rpb24lMjBzZXJ2aWNlfGVufDB8fHx8MTc1ODg5MzAyNHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "disinfection service"
     },
     {
       "id": "avatar1",
       "description": "Avatar of a smiling customer",
-      "imageUrl": "https://images.unsplash.com/photo-1624486217002-846e654ac969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVyc29uJTIwc21pbGluZ3xlbnwwfHx8fDE3NTg3OTQzNjl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1624486217002-846e654ac969?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cGVyc29uJTIwc21pbGluZ3xlbnwwfHx8fDE3NTg3OTQzNjl8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "person smiling"
     },
     {
       "id": "avatar2",
       "description": "Avatar of a happy client",
-      "imageUrl": "https://images.unsplash.com/photo-1579047917338-a6a69144fe63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxoYXBweSUyMHBlcnNvbnxlbnwwfHx8fDE3NTg3OTEzNjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1579047917338-a6a69144fe63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxoYXBweSUyMHBlcnNvbnxlbnwwfHx8fDE3NTg3OTEzNjF8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "happy person"
     },
     {
       "id": "avatar3",
       "description": "Avatar of a satisfied customer",
-      "imageUrl": "https://images.unsplash.com/photo-1690688750578-b7cc62530e0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9maWxlJTIwcGljdHVyZXxlbnwwfHx8fDE3NTg4MzMwMDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1690688750578-b7cc62530e0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9maWxlJTIwcGljdHVyZXxlbnwwfHx8fDE3NTg4MzMwMDF8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "profile picture"
     }
   ]
