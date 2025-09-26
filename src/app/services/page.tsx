@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const movingServices = {
-  title: "MoeMoe Moving & Courier Services",
+  title: "Atlanta Moving Services",
   categories: [
     {
       name: "Medical & Healthcare",
@@ -53,7 +53,7 @@ const movingServices = {
 };
 
 const cleaningServices = {
-  title: "MoeMoe Cleaning Services",
+  title: "Atlanta Cleaning Services",
   categories: [
     {
       name: "Residential Cleaning",
