@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, MapPin, MessageSquare, Star, ArrowRight } from 'lucide-react';
@@ -43,7 +44,7 @@ export default function Home() {
             className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
             data-aos="fade-up"
           >
-            Atlanta's Premier Moving & Cleaning
+            Your trusted partner for Moving/Courier & Cleaning Services in Metro Atlanta
           </h1>
           <p
             className="mt-6 max-w-2xl text-lg md:text-xl"
