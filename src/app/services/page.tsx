@@ -3,13 +3,20 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SERVICES } from '@/lib/config';
+import type { Metadata } from 'next';
+import { ArrowRight } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Our Moving & Cleaning Services in Atlanta, GA',
+  description: 'Explore our professional moving and cleaning services in Metro Atlanta. We offer residential and commercial solutions.',
+};
 
 export default function ServicesPage() {
   return (
     <>
       <section className="bg-secondary py-16 md:py-24">
         <div className="container mx-auto px-4 text-center md:px-6">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl" data-aos="fade-up">Our Professional Services</h1>
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl" data-aos="fade-up">Our Professional Services in Atlanta</h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
             MoeMoe Enterprises offers top-tier moving and cleaning services tailored to meet the needs of our clients in the Metro Atlanta area.
           </p>
@@ -37,12 +44,25 @@ export default function ServicesPage() {
                 </div>
                 <div>
                   <h2 className="text-3xl font-bold tracking-tight">{service.name}</h2>
-                  <p className="mt-4 text-muted-foreground">
-                    {service.description}
-                  </p>
-                  <p className="mt-4 text-muted-foreground">
-                    Whether you're moving across town or need a pristine space to live or work in, our dedicated team is here to help. We combine expertise with a commitment to customer satisfaction.
-                  </p>
+                  <ul className="mt-4 space-y-2 text-muted-foreground">
+                    <li className="flex items-start">
+                      <ArrowRight className="h-5 w-5 mt-1 mr-2 text-primary flex-shrink-0" />
+                      <span>{index === 0 ? 'Local & Long-Distance Moving for Homes & Apartments.' : 'Recurring House Cleaning & Maid Services.'}</span>
+                    </li>
+                    <li className="flex items-start">
+                      <ArrowRight className="h-5 w-5 mt-1 mr-2 text-primary flex-shrink-0" />
+                      <span>{index === 0 ? 'Commercial & Office Relocation Services.' : 'Commercial & Office Janitorial Services.'}</span>
+                    </li>
+                     <li className="flex items-start">
+                      <ArrowRight className="h-5 w-5 mt-1 mr-2 text-primary flex-shrink-0" />
+                      <span>{index === 0 ? 'Expert Packing & Unpacking Services.' : 'Deep Cleaning & Move-In/Move-Out Cleaning.'}</span>
+                    </li>
+                     <li className="flex items-start">
+                      <ArrowRight className="h-5 w-5 mt-1 mr-2 text-primary flex-shrink-0" />
+                       <span>{index === 0 ? 'Specialty Item Moving (Pianos, Antiques).' : 'Post-Construction & Renovation Clean-Up.'}</span>
+                    </li>
+                  </ul>
+
                   <Button asChild size="lg" className="mt-6 transition-transform duration-300 hover:scale-105">
                     <Link href={service.href}>Get a Free Quote</Link>
                   </Button>
