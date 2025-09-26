@@ -31,7 +31,7 @@ const movingServices = {
     {
       name: "Business Deliveries",
       icon: Briefcase,
-      image: "businessCourier",
+      videoUrl: "https://i.imgur.com/7Lm76jf.mp4",
       description: "Fast and reliable delivery of business packages, documents, samples, and time-sensitive materials between offices.",
       items: ["Office documents", "Business packages", "Product samples", "Inter-office mail"],
     },
@@ -100,14 +100,27 @@ const ServiceCard = ({ category, index }: { category: any; index: number }) => (
     data-aos="fade-up"
   >
     <div className={index % 2 === 1 ? 'md:order-last' : ''}>
-      <Image
-        src={PlaceHolderImages[category.image].imageUrl}
-        alt={PlaceHolderImages[category.image].description}
-        width={600}
-        height={400}
-        className="w-full rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
-        data-ai-hint={PlaceHolderImages[category.image].imageHint}
-      />
+      {category.videoUrl ? (
+        <video
+          src={category.videoUrl}
+          width={600}
+          height={400}
+          className="w-full rounded-lg shadow-lg"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      ) : (
+        <Image
+          src={PlaceHolderImages[category.image].imageUrl}
+          alt={PlaceHolderImages[category.image].description}
+          width={600}
+          height={400}
+          className="w-full rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
+          data-ai-hint={PlaceHolderImages[category.image].imageHint}
+        />
+      )}
     </div>
     <div>
       <div className="flex items-center gap-4">
