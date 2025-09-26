@@ -1,10 +1,15 @@
-import type { SVGProps } from 'react';
+import Image from 'next/image';
 import { SITE_CONFIG } from '@/lib/config';
 
-export function Logo(props: SVGProps<SVGSVGElement>) {
+export function Logo() {
   return (
-    <div className="flex items-center font-headline font-bold text-2xl text-primary" {...props}>
-      {SITE_CONFIG.name}
-    </div>
+    <Image
+      src="https://i.imgur.com/dMX1hMe.png"
+      alt={`${SITE_CONFIG.name} Logo`}
+      width={160}
+      height={40}
+      className="object-contain"
+      priority
+    />
   );
 }
