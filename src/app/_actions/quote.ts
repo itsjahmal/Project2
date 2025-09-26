@@ -2,6 +2,7 @@
 "use server";
 
 import { z } from "zod";
+import { sendCustomerQuoteConfirmationEmail, sendAdminQuoteNotificationEmail } from "@/lib/email";
 
 const quoteSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -31,8 +32,25 @@ export async function submitQuoteForm(prevState: any, formData: FormData) {
     };
   }
 
-  console.log("Quote Request Submitted:", validatedFields.data);
+  const quoteData = validatedFields.data;
 
+  // Instead of just logging, we'll "send" emails now.
+  try {
+    // Email to the customer
+    await sendCustomerQuoteConfirmationEmail(quoteData);
+    
+    // Email to the admin
+    await sendAdminQuoteNotificationEmail(quoteData);
+
+  } catch (error) {
+    console.error("Email sending failed:", error);
+    // You might want to handle this case, e.g., by not showing success to the user
+    // or by queuing the email for a retry. For now, we'll let it proceed.
+  }
+  
+  console.log("Quote Request Submitted:", quoteData);
+
+  // We keep the simulated network delay
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   return {
