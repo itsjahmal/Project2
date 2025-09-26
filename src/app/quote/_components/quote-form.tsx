@@ -1,8 +1,8 @@
 
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useActionState, useEffect } from "react";
+import { useFormStatus } from "react-dom";
 import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -30,7 +30,7 @@ function SubmitButton() {
 }
 
 export function QuoteForm() {
-  const [state, formAction] = useFormState(submitQuoteForm, initialState);
+  const [state, formAction] = useActionState(submitQuoteForm, initialState);
   const { toast } = useToast();
   const searchParams = useSearchParams();
   const defaultService = searchParams.get('service') === 'cleaning' ? 'Cleaning' : 'Moving';
