@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
   copyright: `© ${new Date().getFullYear()} MoeMoe Enterprises LLC. All rights reserved.`,
   socialLinks: {
     facebook: 'https://facebook.com/moemoemovers',
-    instagram: 'https://instagram.com/moemoemovers',
+    instagram: 'https://www.instagram.com/moemoemovers/',
     twitter: 'https://twitter.com/moemoemovers',
   },
   navLinks: [
