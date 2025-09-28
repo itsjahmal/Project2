@@ -48,7 +48,8 @@ export async function sendCustomerQuoteConfirmationEmail(data: QuoteData) {
   const html = `
 <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
   <div style="background-color: #041F66; color: #ffffff; padding: 20px; text-align: center;">
-    <h1 style="margin: 0; font-size: 24px;">Thank You, ${data.name}!</h1>
+     <img src="https://i.imgur.com/kpvUUgj.png" alt="${SITE_CONFIG.name} Logo" style="max-width: 150px; margin-bottom: 10px;">
+    <h1 style="margin: 0; font-size: 24px;">Thank You, ${data.name.split(' ')[0]}!</h1>
   </div>
   <div style="padding: 20px;">
     <p>We have received your request for a quote and will get back to you shortly. Here are the details you submitted:</p>
