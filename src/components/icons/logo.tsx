@@ -8,7 +8,7 @@ export function Logo() {
       alt={`${SITE_CONFIG.name} Logo`}
       width={160}
       height={40}
-      className="h-auto w-auto object-contain"
+      className="h-10 w-auto"
       priority
     />
   );
