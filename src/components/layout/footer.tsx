@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Phone, Mail } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Phone, Mail, FileText } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/config';
 import { Logo } from '@/components/icons/logo';
 
@@ -43,6 +43,10 @@ export function Footer() {
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-primary" />
                 <a href={`mailto:${SITE_CONFIG.email}`} className="text-muted-foreground transition-colors hover:text-primary">{SITE_CONFIG.email}</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <FileText className="h-4 w-4 text-primary" />
+                <span className="text-muted-foreground">Fax: {SITE_CONFIG.fax}</span>
               </li>
             </ul>
           </div>

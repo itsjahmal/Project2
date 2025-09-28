@@ -3,6 +3,7 @@ export const SITE_CONFIG = {
   name: 'MoeMoe Enterprises',
   phone: '(404) 375-9495',
   email: 'info@moemoeenterpise.com',
+  fax: '678 813 2150',
   address: 'Metro Atlanta, GA',
   copyright: `© ${new Date().getFullYear()} MoeMoe Enterprises LLC. All rights reserved.`,
   socialLinks: {
