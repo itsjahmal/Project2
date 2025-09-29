@@ -1,9 +1,8 @@
 
-import { SITE_CONFIG } from './config';
+"use server";
 
-// NOTE: This is a simulated email service.
-// In a real-world application, you would integrate a service like Resend, SendGrid, or Nodemailer
-// to handle the actual sending of emails. This service logs the emails to the console for demonstration.
+import { SITE_CONFIG } from './config';
+import nodemailer from 'nodemailer';
 
 export type QuoteData = {
   name: string;
@@ -21,27 +20,44 @@ interface EmailOptions {
 }
 
 /**
- * A mock function to "send" an email by logging its contents to the console.
+ * Sends an email using Nodemailer and SMTP credentials.
  */
 async function sendEmail({ to, subject, html }: EmailOptions) {
-  const from = `${SITE_CONFIG.name} <noreply@moemoeenterprise.com>`;
+  const from = `${SITE_CONFIG.name} <${process.env.EMAIL_USERNAME}>`;
 
-  console.log('--- SIMULATING EMAIL SEND ---');
-  console.log(`From: ${from}`);
-  console.log(`To: ${to}`);
-  console.log(`Subject: ${subject}`);
-  console.log('--- HTML Body ---');
-  console.log(html);
-  console.log('--- END OF SIMULATED EMAIL ---');
+  // These details are for your real SMTP server.
+  // They are securely read from environment variables.
+  const transporter = nodemailer.createTransport({
+    host: "mail.moemoeenterprise.com",
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    auth: {
+      user: process.env.EMAIL_USERNAME, // Your noreply@moemoeenterprise.com email
+      pass: process.env.EMAIL_PASSWORD, // The password for that email account
+    },
+  });
 
-  // Simulate a short network delay
-  await new Promise(resolve => setTimeout(resolve, 500));
+  try {
+    const info = await transporter.sendMail({
+      from,
+      to,
+      subject,
+      html,
+    });
 
-  return { success: true };
+    console.log("Message sent: %s", info.messageId);
+    return { success: true, messageId: info.messageId };
+
+  } catch (error) {
+    console.error("Error sending email:", error);
+    // In a real app, you'd want more robust error handling here.
+    // For now, we'll throw the error so we can see it in the server logs.
+    throw new Error("Failed to send email.");
+  }
 }
 
 /**
- * Generates and "sends" a confirmation email to the customer after a quote request.
+ * Generates and sends a confirmation email to the customer after a quote request.
  */
 export async function sendCustomerQuoteConfirmationEmail(data: QuoteData) {
   const subject = `Your Quote Request from ${SITE_CONFIG.name}`;
@@ -74,7 +90,7 @@ export async function sendCustomerQuoteConfirmationEmail(data: QuoteData) {
 }
 
 /**
- * Generates and "sends" a notification email to the admin with new quote details.
+ * Generates and sends a notification email to the admin with new quote details.
  */
 export async function sendAdminQuoteNotificationEmail(data: QuoteData) {
   const subject = `New Quote Request - ${data.serviceType} for ${data.name}`;
@@ -105,7 +121,7 @@ export async function sendAdminQuoteNotificationEmail(data: QuoteData) {
 </div>`;
 
   return sendEmail({
-    to: `info@moemoeenterprise.com`,
+    to: `info@moemoeenterprise.com`, // Your admin email
     subject,
     html,
   });

@@ -35,18 +35,18 @@ export async function submitQuoteForm(prevState: any, formData: FormData) {
   const quoteData = validatedFields.data;
 
   try {
-    // "Send" the confirmation email to the customer
+    // Send the confirmation email to the customer
     await sendCustomerQuoteConfirmationEmail(quoteData);
     
-    // "Send" the notification email to the admin
+    // Send the notification email to the admin
     await sendAdminQuoteNotificationEmail(quoteData);
 
   } catch (error) {
-    console.error("Email sending simulation failed:", error);
-    // Return a generic error if the email simulation fails
+    console.error("Email sending failed:", error);
+    // Return a generic error if email sending fails
     return {
         type: "error" as const,
-        message: "There was an issue processing the quote request. Please try again."
+        message: "There was an issue sending your quote request. Please try again later."
     }
   }
   
