@@ -20,10 +20,11 @@ interface EmailOptions {
 }
 
 /**
- * Sends an email using Nodemailer and SMTP credentials.
+ * Sends an email using Nodemailer and SMTP credentials from environment variables.
  */
 async function sendEmail({ to, subject, html }: EmailOptions) {
-  const from = `${SITE_CONFIG.name} <${process.env.EMAIL_USERNAME}>`;
+  // The 'from' address must be the same as the authenticated user.
+  const from = `"${SITE_CONFIG.name}" <${process.env.EMAIL_USERNAME}>`;
 
   // These details are for your real SMTP server.
   // They are securely read from environment variables.
@@ -32,7 +33,7 @@ async function sendEmail({ to, subject, html }: EmailOptions) {
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: process.env.EMAIL_USERNAME, // Your noreply@moemoeenterprise.com email
+      user: process.env.EMAIL_USERNAME, // noreply@moemoeenterprise.com
       pass: process.env.EMAIL_PASSWORD, // The password for that email account
     },
   });
@@ -51,7 +52,7 @@ async function sendEmail({ to, subject, html }: EmailOptions) {
   } catch (error) {
     console.error("Error sending email:", error);
     // In a real app, you'd want more robust error handling here.
-    // For now, we'll throw the error so we can see it in the server logs.
+    // For now, we'll throw the error so the server action can catch it.
     throw new Error("Failed to send email.");
   }
 }
@@ -68,7 +69,7 @@ export async function sendCustomerQuoteConfirmationEmail(data: QuoteData) {
     <h1 style="margin: 0; font-size: 24px;">Thank You, ${data.name.split(' ')[0]}!</h1>
   </div>
   <div style="padding: 20px;">
-    <p>We have received your request for a quote and will get back to you shortly. Here are the details you submitted:</p>
+    <p>We have received your request for a quote and will get back to you within 24 hours. Here are the details you submitted:</p>
     <ul style="list-style: none; padding: 0; margin: 20px 0; background-color: #f9f9f9; border-radius: 5px; padding: 15px;">
       <li style="padding: 5px 0;"><strong>Service Type:</strong> ${data.serviceType}</li>
       <li style="padding: 5px 0;"><strong>Address:</strong> ${data.address}</li>
@@ -93,7 +94,7 @@ export async function sendCustomerQuoteConfirmationEmail(data: QuoteData) {
  * Generates and sends a notification email to the admin with new quote details.
  */
 export async function sendAdminQuoteNotificationEmail(data: QuoteData) {
-  const subject = `New Quote Request - ${data.serviceType} for ${data.name}`;
+  const subject = `New Quote Request from ${data.name}`;
   const html = `
 <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px;">
   <div style="background-color: #48BFE3; color: #041F66; padding: 20px;">
@@ -103,15 +104,15 @@ export async function sendAdminQuoteNotificationEmail(data: QuoteData) {
     <p>A new quote request has been submitted through the website. Please review the details below and follow up with the client.</p>
     <h2 style="border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 25px; margin-bottom: 15px;">Client Information</h2>
     <ul style="list-style: none; padding: 0;">
-      <li style="padding: 5px 0;"><strong>Name:</strong> ${data.name}</li>
-      <li style="padding: 5px 0;"><strong>Email:</strong> <a href="mailto:${data.email}" style="color: #041F66;">${data.email}</a></li>
-      <li style="padding: 5px 0;"><strong>Phone:</strong> <a href="tel:${data.phone}" style="color: #041F66;">${data.phone}</a></li>
+      <li style="padding: 5px 0;"><strong>Full Name:</strong> ${data.name}</li>
+      <li style="padding: 5px 0;"><strong>Email Address:</strong> <a href="mailto:${data.email}" style="color: #041F66;">${data.email}</a></li>
+      <li style="padding: 5px 0;"><strong>Phone Number:</strong> <a href="tel:${data.phone}" style="color: #041F66;">${data.phone}</a></li>
     </ul>
     <h2 style="border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 25px; margin-bottom: 15px;">Service Details</h2>
     <ul style="list-style: none; padding: 0;">
-      <li style="padding: 5px 0;"><strong>Service Type:</strong> ${data.serviceType}</li>
+      <li style="padding: 5px 0;"><strong>Service Requested:</strong> ${data.serviceType}</li>
       <li style="padding: 5px 0;"><strong>Service Address:</strong> ${data.address}</li>
-      <li style="padding: 5px 0;"><strong>Project Details:</strong></li>
+      <li style="padding: 5px 0;"><strong>Message/Details:</strong></li>
       <li style="padding: 5px 0; background-color: #f9f9f9; border: 1px solid #eee; border-radius: 4px; padding: 10px;">${data.details}</li>
     </ul>
   </div>
@@ -120,8 +121,11 @@ export async function sendAdminQuoteNotificationEmail(data: QuoteData) {
   </div>
 </div>`;
 
+  // The admin email address to send the notification to.
+  const adminEmail = 'info@moemoeenterprise.com';
+
   return sendEmail({
-    to: `info@moemoeenterprise.com`, // Your admin email
+    to: adminEmail,
     subject,
     html,
   });
