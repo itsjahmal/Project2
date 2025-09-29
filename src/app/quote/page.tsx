@@ -1,15 +1,27 @@
 
 'use client';
 
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { QuoteForm } from './_components/quote-form';
-import type { Metadata } from 'next';
 
-// Metadata can't be in a client component, so we keep the page structure this way.
-// The actual page content will be in a client component.
+// Metadata can't be in a client component in the same file as 'use client'
+// but since this page is now fully client-rendered for the fix, we can define metadata separately if needed
+// or accept that it might be better handled in a parent layout if this page is purely for dynamic content.
+// For now, we focus on fixing the hydration error.
 
 function QuotePageContent() {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    // Render nothing on the server and on the initial client pass
+    if (!isClient) {
+        return null;
+    }
+
   return (
     <>
       <section className="bg-secondary py-16 md:py-24">
@@ -31,7 +43,6 @@ function QuotePageContent() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {/* QuoteForm is already a client component, so it's fine here */}
               <QuoteForm />
             </CardContent>
           </Card>
