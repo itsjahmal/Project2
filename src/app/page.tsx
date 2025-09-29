@@ -1,4 +1,6 @@
 
+'use client';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, MapPin, MessageSquare, Star, ArrowRight } from 'lucide-react';
@@ -9,6 +11,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SITE_CONFIG, SERVICES, FAQ } from '@/lib/config';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
 
 // Mock data for testimonials and features
 const testimonials = [
@@ -26,6 +29,16 @@ const features = [
 ];
 
 export default function Home() {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) {
+        return null;
+    }
+
   return (
     <>
       {/* Hero Section */}
