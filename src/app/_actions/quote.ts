@@ -34,21 +34,22 @@ export async function submitQuoteForm(prevState: any, formData: FormData) {
 
   const quoteData = validatedFields.data;
 
-  // Instead of just logging, we'll "send" emails now.
   try {
-    // Email to the customer
+    // "Send" the confirmation email to the customer
     await sendCustomerQuoteConfirmationEmail(quoteData);
     
-    // Email to the admin
+    // "Send" the notification email to the admin
     await sendAdminQuoteNotificationEmail(quoteData);
 
   } catch (error) {
-    console.error("Email sending failed:", error);
-    // You might want to handle this case, e.g., by not showing success to the user
-    // or by queuing the email for a retry. For now, we'll let it proceed.
+    console.error("Email sending simulation failed:", error);
+    return {
+        type: "error" as const,
+        message: "There was an issue sending the confirmation email. Please try again."
+    }
   }
   
-  console.log("Quote Request Submitted:", quoteData);
+  console.log("Quote Request Submitted and Emails Sent:", quoteData);
 
   // We keep the simulated network delay
   await new Promise(resolve => setTimeout(resolve, 1000));
