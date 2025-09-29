@@ -1,11 +1,25 @@
 
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { QuoteForm } from './_components/quote-form';
 
-function QuotePageContent() {
+// A simple loading skeleton for the form
+function QuoteFormSkeleton() {
+    return (
+        <div className="space-y-6">
+            <div className="h-10 w-1/2 bg-muted rounded-md animate-pulse"></div>
+            <div className="h-10 w-full bg-muted rounded-md animate-pulse"></div>
+            <div className="h-10 w-full bg-muted rounded-md animate-pulse"></div>
+            <div className="h-24 w-full bg-muted rounded-md animate-pulse"></div>
+            <div className="h-12 w-1/3 bg-muted rounded-md animate-pulse"></div>
+        </div>
+    )
+}
+
+
+export default function QuotePage() {
     return (
         <>
           <section className="bg-secondary py-16 md:py-24">
@@ -27,25 +41,13 @@ function QuotePageContent() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <QuoteForm />
+                    <Suspense fallback={<QuoteFormSkeleton />}>
+                        <QuoteForm />
+                    </Suspense>
                 </CardContent>
               </Card>
             </div>
           </section>
         </>
-    )
-}
-
-// We wrap the client content in a parent component that can handle suspense.
-export default function QuotePage() {
-    const [isClient, setIsClient] = useState(false)
-    useEffect(() => {
-        setIsClient(true)
-    }, [])
-
-    return (
-        <Suspense>
-            {isClient ? <QuotePageContent /> : null}
-        </Suspense>
     )
 }
