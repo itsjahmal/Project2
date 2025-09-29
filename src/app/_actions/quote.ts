@@ -43,16 +43,14 @@ export async function submitQuoteForm(prevState: any, formData: FormData) {
 
   } catch (error) {
     console.error("Email sending simulation failed:", error);
+    // Return a generic error if the email simulation fails
     return {
         type: "error" as const,
-        message: "There was an issue sending the confirmation email. Please try again."
+        message: "There was an issue processing the quote request. Please try again."
     }
   }
   
   console.log("Quote Request Submitted and Emails Sent:", quoteData);
-
-  // We keep the simulated network delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
 
   return {
     type: "success" as const,
