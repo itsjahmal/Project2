@@ -42,11 +42,12 @@ export function QuoteForm() {
         description: state.message,
       });
     } else if (state.type === "error") {
-      const errorMessages = Object.values(state.errors || {}).flat().join(' ');
+      // If there are specific field errors, join them. Otherwise, use the general message.
+      const errorMessages = state.errors ? Object.values(state.errors).flat().join(' ') : state.message;
       toast({
         variant: "destructive",
         title: "Error submitting form.",
-        description: errorMessages || "Please review the form for errors.",
+        description: errorMessages || "Please review the form for errors and try again.",
       });
     }
   }, [state, toast]);

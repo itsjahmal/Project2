@@ -16,6 +16,8 @@ const quoteSchema = z.object({
 });
 
 export async function submitQuoteForm(prevState: any, formData: FormData) {
+  console.log("Submit quote form action initiated.");
+
   const validatedFields = quoteSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
@@ -26,34 +28,37 @@ export async function submitQuoteForm(prevState: any, formData: FormData) {
   });
 
   if (!validatedFields.success) {
+    console.log("Validation failed:", validatedFields.error.flatten().fieldErrors);
     return {
       type: "error" as const,
       errors: validatedFields.error.flatten().fieldErrors,
+      message: "Please correct the errors in the form.",
     };
   }
 
   const quoteData = validatedFields.data;
+  console.log("Validation successful. Quote data:", quoteData);
 
   try {
-    // Send the confirmation email to the customer
-    await sendCustomerQuoteConfirmationEmail(quoteData);
-    
-    // Send the notification email to the admin
-    await sendAdminQuoteNotificationEmail(quoteData);
+    console.log("Attempting to send emails...");
+    // Send emails in parallel
+    await Promise.all([
+      sendCustomerQuoteConfirmationEmail(quoteData),
+      sendAdminQuoteNotificationEmail(quoteData)
+    ]);
+    console.log("Emails sent successfully.");
+
+    return {
+      type: "success" as const,
+      message: "Thank you for your quote request! We will review the details and get back to you within 24 hours.",
+    };
 
   } catch (error) {
-    console.error("Email sending failed:", error);
-    // Return a generic error if email sending fails
+    console.error("Email sending process failed:", error);
     return {
         type: "error" as const,
-        message: "There was an issue sending your quote request. Please try again later."
+        errors: null,
+        message: "There was a problem submitting your request. Please try again later."
     }
   }
-  
-  console.log("Quote Request Submitted and Emails Sent:", quoteData);
-
-  return {
-    type: "success" as const,
-    message: "Thank you for your quote request! We will review the details and get back to you within 24 hours.",
-  };
 }
