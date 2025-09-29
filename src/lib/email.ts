@@ -20,27 +20,25 @@ interface EmailOptions {
 }
 
 /**
- * Sends an email using Nodemailer and SMTP credentials from environment variables.
+ * Sends an email using Nodemailer and hardcoded SMTP credentials.
+ * WARNING: This method is less secure. For production, environment variables are recommended.
  */
 async function sendEmail({ to, subject, html }: EmailOptions) {
-  // The 'from' address must be the same as the authenticated user.
-  const from = `"${SITE_CONFIG.name}" <${process.env.EMAIL_USERNAME}>`;
-
   // These details are for your real SMTP server.
-  // They are securely read from environment variables.
   const transporter = nodemailer.createTransport({
     host: "mail.moemoeenterprise.com",
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: process.env.EMAIL_USERNAME, // noreply@moemoeenterprise.com
-      pass: process.env.EMAIL_PASSWORD, // The password for that email account
+      // Credentials are placed directly here.
+      user: "noreply@moemoeenterprise.com", 
+      pass: "@moemoeenterprise.com", 
     },
   });
 
   try {
     const info = await transporter.sendMail({
-      from,
+      from: `"${SITE_CONFIG.name}" <noreply@moemoeenterprise.com>`,
       to,
       subject,
       html,
@@ -51,9 +49,8 @@ async function sendEmail({ to, subject, html }: EmailOptions) {
 
   } catch (error) {
     console.error("Error sending email:", error);
-    // In a real app, you'd want more robust error handling here.
-    // For now, we'll throw the error so the server action can catch it.
-    throw new Error("Failed to send email.");
+    // Throw the error so the server action can catch it and return a user-friendly message.
+    throw new Error("Failed to send email. Please check server logs for details.");
   }
 }
 
