@@ -9,19 +9,19 @@ import { SITE_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE_CONFIG.name} | Top Moving & Cleaning Services in Atlanta, GA`,
+    default: `Premier Moving & Cleaning Services in Atlanta, GA | ${SITE_CONFIG.name}`,
     template: `%s | ${SITE_CONFIG.name}`,
   },
-  description: 'Top-rated moving and cleaning services for the Metro Atlanta area, including Roswell, Marietta, and Sandy Springs. Get your free, no-obligation quote today!',
-  keywords: ['moving services atlanta', 'cleaning services atlanta', 'local movers atlanta ga', 'office cleaning metro atlanta', 'residential movers roswell ga', 'apartment cleaning sandy springs', 'movers near me'],
-  metadataBase: new URL('https://moemoe-enterprises-llc.web.app'), // Replace with actual domain
+  description: 'Get top-rated residential & commercial cleaning, plus local moving and courier services in Atlanta, GA. Licensed & insured. Request your free, no-obligation quote today!',
+  keywords: ['cleaning services atlanta', 'house cleaning atlanta', 'commercial cleaning atlanta', 'office cleaning services atlanta ga', 'moving services atlanta', 'local movers atlanta ga', 'courier services atlanta'],
+  metadataBase: new URL('https://www.moemoeenterprises.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: `${SITE_CONFIG.name} | Top Moving & Cleaning Services in Atlanta, GA`,
+    title: `Premier Moving & Cleaning Services in Atlanta, GA | ${SITE_CONFIG.name}`,
     description: 'Your trusted partner for professional moving and cleaning in Metro Atlanta.',
-    url: 'https://moemoe-enterprises-llc.web.app', // Replace with actual domain
+    url: 'https://www.moemoeenterprises.com',
     siteName: SITE_CONFIG.name,
     images: [
       {
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_CONFIG.name} | Top Moving & Cleaning Services in Atlanta, GA`,
+    title: `Premier Moving & Cleaning Services in Atlanta, GA | ${SITE_CONFIG.name}`,
     description: 'Top-rated moving and cleaning services for the Metro Atlanta area. Get your free quote!',
     images: ['https://i.imgur.com/yv4A8GD.jpeg'],
   },
