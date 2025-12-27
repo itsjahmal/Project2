@@ -62,7 +62,7 @@ export default function CourierOpsPage() {
             try {
                 // The rewrite in next.config.js will proxy this to https://api.moemoeenterprise.com/courier/list.php
                 const response = await fetch('/api/courier/list.php', {
-                    // TODO: Add Authorization header with JWT token
+                    credentials: 'include'
                 });
                 
                 if (!response.ok) {

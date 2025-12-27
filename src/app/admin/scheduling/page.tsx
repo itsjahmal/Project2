@@ -33,7 +33,7 @@ export default function SchedulingPage() {
             try {
                 // The rewrite in next.config.js will proxy this to https://api.moemoeenterprise.com/jobs/list.php
                 const response = await fetch('/api/jobs/list.php', {
-                    // TODO: Add Authorization header with JWT token
+                    credentials: 'include'
                 });
                 
                 if (!response.ok) {

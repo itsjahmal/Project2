@@ -80,8 +80,7 @@ export default function QuotesPage() {
             try {
                 // The rewrite in next.config.js will proxy this to https://api.moemoeenterprise.com/quotes/list.php
                 const response = await fetch('/api/quotes/list.php', {
-                    // TODO: Add Authorization header with JWT token
-                    // headers: { 'Authorization': `Bearer ${your_jwt_token}` }
+                    credentials: 'include'
                 });
 
                 if (!response.ok) {

@@ -68,7 +68,7 @@ export default function EmployeesPage() {
             try {
                 // The rewrite in next.config.js will proxy this to https://api.moemoeenterprise.com/employees/list.php
                 const response = await fetch('/api/employees/list.php', {
-                    // TODO: Add Authorization header with JWT token
+                    credentials: 'include'
                 });
                 
                 if (!response.ok) {
