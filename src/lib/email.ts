@@ -65,7 +65,7 @@ export async function sendCustomerQuoteConfirmationEmail(data: QuoteData) {
   const subject = `Your Quote Request from ${SITE_CONFIG.name}`;
   const html = `
 <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-  <div style="background-color: #041F66; color: #ffffff; padding: 20px; text-align: center;">
+  <div style="background-color: #ffffff; color: #041F66; padding: 20px; text-align: center; border-bottom: 1px solid #e0e0e0;">
      <img src="https://i.imgur.com/kpvUUgj.png" alt="${SITE_CONFIG.name} Logo" style="max-width: 150px; margin-bottom: 10px;">
     <h1 style="margin: 0; font-size: 24px;">Thank You, ${data.name.split(' ')[0]}!</h1>
   </div>
@@ -79,7 +79,7 @@ export async function sendCustomerQuoteConfirmationEmail(data: QuoteData) {
     <p>If you have any immediate questions, feel free to contact us at <a href="mailto:${SITE_CONFIG.email}" style="color: #041F66;">${SITE_CONFIG.email}</a> or call us at ${SITE_CONFIG.phone}.</p>
     <p style="margin-top: 20px;">Best regards,<br/>The ${SITE_CONFIG.name} Team</p>
   </div>
-  <div style="background-color: #f3f4f6; text-align: center; padding: 15px; font-size: 12px; color: #666;">
+  <div style="background-color: #041F66; color: #ffffff; text-align: center; padding: 15px; font-size: 12px;">
     <p>${SITE_CONFIG.copyright}</p>
   </div>
 </div>`;
