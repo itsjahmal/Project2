@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { SITE_CONFIG, SERVICES } from '@/lib/config';
+import { SITE_CONFIG } from '@/lib/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = 'https://moemoe-enterprises-llc.web.app'; // Replace with your actual domain
@@ -20,10 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   };
 
-  // Dynamic service routes from SERVICES
-  // The main /services page is already included in staticRoutes
-  // This adds specific service anchor links if desired, but it's better to just have the main page.
-  // The sitemap should contain unique pages. Anchor links are not separate pages.
   const serviceMainRoute = staticRoutes.find(r => r.url.endsWith('/services'));
   if (serviceMainRoute) {
     serviceMainRoute.priority = 0.9;
