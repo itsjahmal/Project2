@@ -8,17 +8,17 @@ import { SITE_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: {
-    default: `Premier Moving & Cleaning Services in Atlanta, GA | ${SITE_CONFIG.name}`,
+    default: `Top Moving & Cleaning Services in Atlanta | ${SITE_CONFIG.name}`,
     template: `%s | ${SITE_CONFIG.name}`,
   },
-  description: 'Get top-rated residential & commercial cleaning, plus local moving and courier services in Atlanta, GA. Licensed & insured. Request your free, no-obligation quote today!',
+  description: 'Top-rated moving and cleaning services in Atlanta, GA. We offer residential & commercial cleaning, plus local moving and courier services. Get a free quote!',
   keywords: ['cleaning services atlanta', 'house cleaning atlanta', 'commercial cleaning atlanta', 'office cleaning services atlanta ga', 'moving services atlanta', 'local movers atlanta ga', 'courier services atlanta'],
   metadataBase: new URL('https://www.moemoeenterprises.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: `Premier Moving & Cleaning Services in Atlanta, GA | ${SITE_CONFIG.name}`,
+    title: `Top Moving & Cleaning Services in Atlanta | ${SITE_CONFIG.name}`,
     description: 'Your trusted partner for professional moving and cleaning in Metro Atlanta.',
     url: 'https://www.moemoeenterprises.com',
     siteName: SITE_CONFIG.name,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `Premier Moving & Cleaning Services in Atlanta, GA | ${SITE_CONFIG.name}`,
+    title: `Top Moving & Cleaning Services in Atlanta | ${SITE_CONFIG.name}`,
     description: 'Top-rated moving and cleaning services for the Metro Atlanta area. Get your free quote!',
     images: ['https://i.imgur.com/yv4A8GD.jpeg'],
   },
