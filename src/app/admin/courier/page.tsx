@@ -1,4 +1,6 @@
 
+'use client';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -16,45 +18,148 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from "@/components/ui/badge";
-import { MoreHorizontal, PlusCircle } from "lucide-react";
+import { MoreHorizontal, PlusCircle, ServerCrash } from "lucide-react";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { Skeleton } from '@/components/ui/skeleton';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
-// MOCK DATA based on the provided SQL schema
-const courierOps = [
-    {
-        id: 'COP-001',
-        quote_id: 'QT-004',
-        driver_id: 'EMP-003',
-        pickup_time: '2023-06-26 10:00 AM',
-        delivery_time: '2023-06-26 11:30 AM',
-        status: 'Delivered',
-    },
-    {
-        id: 'COP-002',
-        quote_id: 'QT-006',
-        driver_id: 'EMP-003',
-        pickup_time: '2023-06-27 02:00 PM',
-        delivery_time: null,
-        status: 'In Transit',
-    },
-    {
-        id: 'COP-003',
-        quote_id: 'QT-007',
-        driver_id: 'EMP-005',
-        pickup_time: null,
-        delivery_time: null,
-        status: 'Assigned',
-    },
-];
 
-const statusStyles: { [key: string]: string } = {
+type CourierStatus = 'Assigned' | 'In Transit' | 'Delivered' | 'Delayed';
+
+type CourierOp = {
+    id: string;
+    quote_id: string;
+    driver_id: string;
+    pickup_time: string | null;
+    delivery_time: string | null;
+    status: CourierStatus;
+};
+
+const statusStyles: Record<CourierStatus, string> = {
     Assigned: 'bg-yellow-100 text-yellow-800',
     'In Transit': 'bg-blue-100 text-blue-800',
     Delivered: 'bg-green-100 text-green-800',
     Delayed: 'bg-red-100 text-red-800',
+};
+
+function TableSkeleton() {
+    return (
+        <div className="space-y-2">
+            <Skeleton className="h-12 w-full" />
+            <Skeleton className="h-12 w-full" />
+            <Skeleton className="h-12 w-full" />
+        </div>
+    );
 }
 
 export default function CourierOpsPage() {
+    const [courierOps, setCourierOps] = useState<CourierOp[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+     useEffect(() => {
+        async function fetchCourierOps() {
+            try {
+                // The rewrite in next.config.js will proxy this to https://api.moemoeenterprise.com/courier/list.php
+                const response = await fetch('/api/courier/list.php', {
+                    // TODO: Add Authorization header with JWT token
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => null);
+                    throw new Error(errorData?.message || `Failed to fetch courier operations. Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                if (data.success) {
+                    setCourierOps(data.operations);
+                } else {
+                    throw new Error(data.message || "API returned an error.");
+                }
+            } catch (e: any) {
+                setError(e.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchCourierOps();
+    }, []);
+
+     const renderContent = () => {
+        if (loading) {
+            return <TableSkeleton />;
+        }
+
+        if (error) {
+            return (
+                <Alert variant="destructive">
+                    <ServerCrash className="h-4 w-4" />
+                    <AlertTitle>Error Fetching Data</AlertTitle>
+                    <AlertDescription>{error}</AlertDescription>
+                </Alert>
+            );
+        }
+        
+        if (courierOps.length === 0) {
+            return (
+                <div className="text-center p-8 border-dashed border-2 rounded-md">
+                    <p className="text-muted-foreground">No courier jobs found.</p>
+                </div>
+            )
+        }
+
+        return (
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead>Job ID</TableHead>
+                        <TableHead>Driver</TableHead>
+                        <TableHead className="hidden md:table-cell">Status</TableHead>
+                        <TableHead className="hidden md:table-cell">Pickup Time</TableHead>
+                        <TableHead className="hidden md:table-cell">Delivery Time</TableHead>
+                        <TableHead>
+                            <span className="sr-only">Actions</span>
+                        </TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {courierOps.map((op) => (
+                        <TableRow key={op.id}>
+                            <TableCell>
+                                <div className="font-medium">{op.id}</div>
+                                <div className="text-sm text-muted-foreground">Quote: {op.quote_id}</div>
+                            </TableCell>
+                                <TableCell>Driver {op.driver_id}</TableCell>
+                            <TableCell className="hidden md:table-cell">
+                                <Badge variant="outline" className={statusStyles[op.status]}>
+                                    {op.status}
+                                </Badge>
+                            </TableCell>
+                            <TableCell className="hidden md:table-cell">{op.pickup_time || 'N/A'}</TableCell>
+                            <TableCell className="hidden md:table-cell">{op.delivery_time || 'N/A'}</TableCell>
+                            <TableCell>
+                                    <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                        <Button aria-haspopup="true" size="icon" variant="ghost">
+                                            <MoreHorizontal className="h-4 w-4" />
+                                            <span className="sr-only">Toggle menu</span>
+                                        </Button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent align="end">
+                                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                        <DropdownMenuItem>View Route</DropdownMenuItem>
+                                        <DropdownMenuItem>Update Status</DropdownMenuItem>
+                                        <DropdownMenuItem>Contact Driver</DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        )
+     }
+
     return (
         <div className="flex flex-col gap-4">
              <div className="flex items-center justify-between">
@@ -70,55 +175,7 @@ export default function CourierOpsPage() {
                     <CardDescription>Monitor and manage all active courier routes.</CardDescription>
                 </CardHeader>
                  <CardContent>
-                    {/* TODO: Fetch courier operations from your API endpoint */}
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Job ID</TableHead>
-                                <TableHead>Driver</TableHead>
-                                <TableHead className="hidden md:table-cell">Status</TableHead>
-                                <TableHead className="hidden md:table-cell">Pickup Time</TableHead>
-                                <TableHead className="hidden md:table-cell">Delivery Time</TableHead>
-                                <TableHead>
-                                    <span className="sr-only">Actions</span>
-                                </TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {courierOps.map((op) => (
-                                <TableRow key={op.id}>
-                                    <TableCell>
-                                        <div className="font-medium">{op.id}</div>
-                                        <div className="text-sm text-muted-foreground">Quote: {op.quote_id}</div>
-                                    </TableCell>
-                                     <TableCell>Driver {op.driver_id}</TableCell>
-                                    <TableCell className="hidden md:table-cell">
-                                        <Badge variant="outline" className={statusStyles[op.status]}>
-                                            {op.status}
-                                        </Badge>
-                                    </TableCell>
-                                    <TableCell className="hidden md:table-cell">{op.pickup_time || 'N/A'}</TableCell>
-                                    <TableCell className="hidden md:table-cell">{op.delivery_time || 'N/A'}</TableCell>
-                                    <TableCell>
-                                         <DropdownMenu>
-                                            <DropdownMenuTrigger asChild>
-                                                <Button aria-haspopup="true" size="icon" variant="ghost">
-                                                    <MoreHorizontal className="h-4 w-4" />
-                                                    <span className="sr-only">Toggle menu</span>
-                                                </Button>
-                                            </DropdownMenuTrigger>
-                                            <DropdownMenuContent align="end">
-                                                <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                                <DropdownMenuItem>View Route</DropdownMenuItem>
-                                                <DropdownMenuItem>Update Status</DropdownMenuItem>
-                                                <DropdownMenuItem>Contact Driver</DropdownMenuItem>
-                                            </DropdownMenuContent>
-                                        </DropdownMenu>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                    {renderContent()}
                 </CardContent>
             </Card>
             <div

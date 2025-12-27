@@ -1,5 +1,6 @@
 
 'use client';
+import { useState, useEffect } from 'react';
 import {
   File,
   ListFilter,
@@ -34,69 +35,161 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { ServerCrash } from 'lucide-react';
 
-// MOCK DATA based on the provided SQL schema
-const quotes = [
-    {
-        id: 'QT-001',
-        name: 'Liam Johnson',
-        email: 'liam@example.com',
-        service_type: 'Moving',
-        status: 'Approved',
-        created_at: '2023-06-23',
-        amount: 250.00
-    },
-    {
-        id: 'QT-002',
-        name: 'Olivia Smith',
-        email: 'olivia@example.com',
-        service_type: 'Cleaning',
-        status: 'Declined',
-        created_at: '2023-06-24',
-        amount: 150.00
-    },
-    {
-        id: 'QT-003',
-        name: 'Noah Williams',
-        email: 'noah@example.com',
-        service_type: 'Moving',
-        status: 'Pending',
-        created_at: '2023-06-25',
-        amount: 750.50
-    },
-    {
-        id: 'QT-004',
-        name: 'Emma Brown',
-        email: 'emma@example.com',
-        service_type: 'Courier',
-        status: 'Completed',
-        created_at: '2023-06-26',
-        amount: 45.00
-    },
-    {
-        id: 'QT-005',
-        name: 'James Jones',
-        email: 'james@example.com',
-        service_type: 'Cleaning',
-        status: 'Pending',
-        created_at: '2023-06-27',
-        amount: 320.00
-    }
-];
+type QuoteStatus = 'Pending' | 'Approved' | 'Completed' | 'Declined';
 
-const statusStyles: { [key: string]: string } = {
+type Quote = {
+    id: string;
+    name: string;
+    email: string;
+    service_type: string;
+    status: QuoteStatus;
+    created_at: string;
+    amount: number;
+};
+
+const statusStyles: Record<QuoteStatus, string> = {
     Pending: 'bg-yellow-100 text-yellow-800 border-yellow-300',
     Approved: 'bg-green-100 text-green-800 border-green-300',
     Completed: 'bg-blue-100 text-blue-800 border-blue-300',
     Declined: 'bg-red-100 text-red-800 border-red-300',
+};
+
+function TableSkeleton() {
+    return (
+        <div className="space-y-2">
+            <Skeleton className="h-12 w-full" />
+            <Skeleton className="h-12 w-full" />
+            <Skeleton className="h-12 w-full" />
+            <Skeleton className="h-12 w-full" />
+            <Skeleton className="h-12 w-full" />
+        </div>
+    );
 }
 
 export default function QuotesPage() {
-    // TODO: Add state management and API calls here
-    // Example: const [quotes, setQuotes] = useState([]);
-    // useEffect(() => {
-    //   fetch('/api/quotes').then(res => res.json()).then(data => setQuotes(data.quotes));
-    // }, []);
+    const [quotes, setQuotes] = useState<Quote[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        async function fetchQuotes() {
+            try {
+                // The rewrite in next.config.js will proxy this to https://api.moemoeenterprise.com/quotes/list.php
+                const response = await fetch('/api/quotes/list.php', {
+                    // TODO: Add Authorization header with JWT token
+                    // headers: { 'Authorization': `Bearer ${your_jwt_token}` }
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => null);
+                    throw new Error(errorData?.message || `Failed to fetch quotes. Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                if (data.success) {
+                    setQuotes(data.quotes);
+                } else {
+                    throw new Error(data.message || "API returned an error.");
+                }
+            } catch (e: any) {
+                setError(e.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchQuotes();
+    }, []);
+
+    const renderContent = () => {
+        if (loading) {
+            return <TableSkeleton />;
+        }
+
+        if (error) {
+            return (
+                <Alert variant="destructive">
+                    <ServerCrash className="h-4 w-4" />
+                    <AlertTitle>Error Fetching Data</AlertTitle>
+                    <AlertDescription>{error}</AlertDescription>
+                </Alert>
+            );
+        }
+        
+        if (quotes.length === 0) {
+            return (
+                <div className="text-center p-8 border-dashed border-2 rounded-md">
+                    <p className="text-muted-foreground">No quotes found.</p>
+                </div>
+            )
+        }
+
+        return (
+            <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Customer</TableHead>
+                    <TableHead className="hidden md:table-cell">
+                      Service
+                    </TableHead>
+                    <TableHead className="hidden md:table-cell">
+                      Status
+                    </TableHead>
+                    <TableHead className="hidden md:table-cell">
+                      Created at
+                    </TableHead>
+                    <TableHead className="text-right">Amount</TableHead>
+                     <TableHead>
+                      <span className="sr-only">Actions</span>
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {quotes.map((quote) => (
+                    <TableRow key={quote.id}>
+                        <TableCell>
+                            <div className="font-medium">{quote.name}</div>
+                            <div className="hidden text-sm text-muted-foreground md:inline">{quote.email}</div>
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell">{quote.service_type}</TableCell>
+                        <TableCell className="hidden md:table-cell">
+                             <Badge variant="outline" className={statusStyles[quote.status]}>
+                                {quote.status}
+                            </Badge>
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell">{new Date(quote.created_at).toLocaleDateString()}</TableCell>
+                        <TableCell className="text-right">${Number(quote.amount).toFixed(2)}</TableCell>
+                         <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="h-4 w-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem>View Details</DropdownMenuItem>
+                            <DropdownMenuItem>Approve</DropdownMenuItem>
+                            <DropdownMenuItem>Decline</DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+            </Table>
+        )
+    }
 
   return (
     <>
@@ -158,71 +251,11 @@ export default function QuotesPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Customer</TableHead>
-                    <TableHead className="hidden md:table-cell">
-                      Service
-                    </TableHead>
-                    <TableHead className="hidden md:table-cell">
-                      Status
-                    </TableHead>
-                    <TableHead className="hidden md:table-cell">
-                      Created at
-                    </TableHead>
-                    <TableHead className="text-right">Amount</TableHead>
-                     <TableHead>
-                      <span className="sr-only">Actions</span>
-                    </TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {/* TODO: Replace 'quotes' with data fetched from your API */}
-                  {quotes.map((quote) => (
-                    <TableRow key={quote.id}>
-                        <TableCell>
-                            <div className="font-medium">{quote.name}</div>
-                            <div className="hidden text-sm text-muted-foreground md:inline">{quote.email}</div>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">{quote.service_type}</TableCell>
-                        <TableCell className="hidden md:table-cell">
-                             <Badge variant="outline" className={statusStyles[quote.status as keyof typeof statusStyles]}>
-                                {quote.status}
-                            </Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">{quote.created_at}</TableCell>
-                        <TableCell className="text-right">${quote.amount.toFixed(2)}</TableCell>
-                         <TableCell>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="h-4 w-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>View Details</DropdownMenuItem>
-                            <DropdownMenuItem>Approve</DropdownMenuItem>
-                            <DropdownMenuItem>Decline</DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+              {renderContent()}
             </CardContent>
             <CardFooter>
               <div className="text-xs text-muted-foreground">
-                Showing <strong>1-5</strong> of <strong>32</strong>{' '}
+                Showing <strong>1-{quotes.length}</strong> of <strong>{quotes.length}</strong>{' '}
                 quotes
               </div>
             </CardFooter>
