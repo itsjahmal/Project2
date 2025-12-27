@@ -1,6 +1,7 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Gift, Home, ShieldCheck } from 'lucide-react';
+import { ArrowRight, CheckCircle, Gift, Home, ShieldCheck, Star } from 'lucide-react';
 import type { Metadata } from 'next';
 
 import { Button } from '@/components/ui/button';
