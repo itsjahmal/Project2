@@ -9,7 +9,8 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { SITE_CONFIG, SERVICES, FAQ } from '@/lib/config';
+import { SITE_CONFIG, SERVICES } from '@/lib/config';
+import { FAQ } from '@/lib/faq';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 
