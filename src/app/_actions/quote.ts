@@ -2,7 +2,7 @@
 "use server";
 
 import { z } from "zod";
-import { sendCustomerQuoteConfirmationEmail, sendAdminQuoteNotificationEmail } from "@/lib/email";
+import type { QuoteData } from "@/lib/email";
 
 const quoteSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -36,17 +36,26 @@ export async function submitQuoteForm(prevState: any, formData: FormData) {
     };
   }
 
-  const quoteData = validatedFields.data;
+  const quoteData: QuoteData = validatedFields.data;
   console.log("Validation successful. Quote data:", quoteData);
 
   try {
-    console.log("Attempting to send emails...");
-    // Send emails in parallel
-    await Promise.all([
-      sendCustomerQuoteConfirmationEmail(quoteData),
-      sendAdminQuoteNotificationEmail(quoteData)
-    ]);
-    console.log("Emails sent successfully.");
+    // We call our internal API route to handle the email sending.
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/send-quote-email`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(quoteData),
+    });
+
+    if (!response.ok) {
+        const res = await response.json();
+        console.error("API Error:", res.message);
+        throw new Error(res.message || "Failed to send email from API route.");
+    }
+    
+    console.log("Emails sent successfully via API route.");
 
     return {
       type: "success" as const,
@@ -55,10 +64,11 @@ export async function submitQuoteForm(prevState: any, formData: FormData) {
 
   } catch (error) {
     console.error("Email sending process failed:", error);
+    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred.";
     return {
         type: "error" as const,
         errors: null,
-        message: "There was a problem submitting your request. Please try again later."
+        message: `There was a problem submitting your request. Please try again later. Error: ${errorMessage}`
     }
   }
 }

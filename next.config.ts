@@ -48,7 +48,7 @@ const nextConfig: NextConfig = {
     ]
   },
    env: {
-    NEXT_PUBLIC_API_URL: 'https://api.moemoeenterprise.com',
+    NEXT_PUBLIC_URL: process.env.NODE_ENV === 'production' ? 'https://moemoe.netlify.app' : 'http://localhost:9002',
   },
 };
 
