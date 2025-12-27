@@ -4,7 +4,7 @@ import { SITE_CONFIG } from '@/lib/config';
 export function Logo() {
   return (
     <Image
-      src="https://i.imgur.com/kpvUUgj.png"
+      src="/logo.png"
       alt={`${SITE_CONFIG.name} Logo`}
       width={160}
       height={40}
