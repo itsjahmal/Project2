@@ -54,71 +54,92 @@ export const metadata: Metadata = {
 };
 
 const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  'name': SITE_CONFIG.name,
-  'image': 'https://i.imgur.com/kpvUUgj.png',
-  '@id': 'https://moemoe-enterprises-llc.web.app',
-  'url': 'https://moemoe-enterprises-llc.web.app',
-  'telephone': SITE_CONFIG.phone,
-  'email': SITE_CONFIG.email,
-  'address': {
-    '@type': 'PostalAddress',
-    'addressLocality': 'Atlanta',
-    'addressRegion': 'GA',
-    'addressCountry': 'US'
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.moemoeenterprises.com/#localbusiness",
+  "name": "Moemoe Enterprises LLC",
+  "description": "Moemoe Enterprises LLC provides professional residential cleaning, commercial cleaning, moving, and courier services across the Atlanta Metro area. Request a free quote today.",
+  "url": "https://www.moemoeenterprises.com",
+  "telephone": "+1-(404) 375-9495",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4935 Presidents Way",
+    "addressLocality": "Tucker",
+    "addressRegion": "GA",
+    "postalCode": "30084",
+    "addressCountry": "US"
   },
-  'geo': {
-    '@type': 'GeoCoordinates',
-    'latitude': 33.7488,
-    'longitude': -84.3877
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Atlanta Metro Area"
   },
-  'openingHoursSpecification': {
-    '@type': 'OpeningHoursSpecification',
-    'dayOfWeek': [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday'
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
     ],
-    'opens': '00:00',
-    'closes': '23:59'
+    "opens": "08:00",
+    "closes": "18:00"
   },
-  'makesOffer': [
-    {
-      '@type': 'Offer',
-      'itemOffered': {
-        '@type': 'Service',
-        'name': 'Moving Services'
-      }
-    },
-    {
-      '@type': 'Offer',
-      'itemOffered': {
-        '@type': 'Service',
-        'name': 'Cleaning Services'
-      }
-    },
-    {
-      '@type': 'Offer',
-      'itemOffered': {
-        '@type': 'Service',
-        'name': 'Courier Services'
-      }
-    }
+  "sameAs": [
+    "https://www.thumbtack.com/ga/atlanta/moving-companies/moemoe-enterprises-llc"
   ],
-  'areaServed': {
-    '@type': 'AdministrativeArea',
-    'name': 'Metro Atlanta'
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Moemoe Enterprises Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Residential Cleaning Services",
+          "areaServed": "Atlanta Metro Area"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Commercial & Office Cleaning Services",
+          "areaServed": "Atlanta Metro Area"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Moving Services",
+          "areaServed": "Atlanta Metro Area"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Courier & Same-Day Delivery Services",
+          "areaServed": "Atlanta Metro Area"
+        }
+      }
+    ]
   },
-  'sameAs': [
-    SITE_CONFIG.socialLinks.facebook,
-    SITE_CONFIG.socialLinks.instagram,
-    SITE_CONFIG.socialLinks.twitter
-  ]
+  "potentialAction": {
+    "@type": "Action",
+    "name": "Request a Free Quote",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.moemoeenterprises.com/request-a-quote",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/MobileWebPlatform"
+      ]
+    }
+  }
 };
 
 export default function RootLayout({
