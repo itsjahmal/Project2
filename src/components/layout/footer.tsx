@@ -53,9 +53,9 @@ export function Footer() {
            <div className="md:col-span-3">
             <h4 className="font-headline text-md mb-4 font-semibold">Follow Us</h4>
             <div className="flex space-x-4">
-              <a href={SITE_CONFIG.socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary"><Facebook /></a>
-              <a href={SITE_CONFIG.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary"><Instagram /></a>
-              <a href={SITE_CONFIG.socialLinks.twitter} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary"><Twitter /></a>
+              <a href={SITE_CONFIG.socialLinks.facebook} target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="text-muted-foreground transition-colors hover:text-primary"><Facebook /></a>
+              <a href={SITE_CONFIG.socialLinks.instagram} target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="text-muted-foreground transition-colors hover:text-primary"><Instagram /></a>
+              <a href={SITE_CONFIG.socialLinks.twitter} target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter" className="text-muted-foreground transition-colors hover:text-primary"><Twitter /></a>
             </div>
           </div>
         </div>
