@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://www.moemoeenterprises.com
-
-# Sitemaps
-Sitemap: https://www.moemoeenterprises.com/sitemap.xml
