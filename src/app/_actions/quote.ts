@@ -40,7 +40,6 @@ export async function submitQuoteForm(prevState: any, formData: FormData) {
   console.log("Validation successful. Quote data:", quoteData);
 
   try {
-    // We call our internal API route to handle the email sending.
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/send-quote-email`, {
         method: 'POST',
         headers: {
