@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https,',
         hostname: 'picsum.photos',
         port: '',
         pathname: '/**',
@@ -46,6 +46,11 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+   env: {
+    NEXT_PUBLIC_URL: process.env.NODE_ENV === 'production' 
+      ? 'https://moemoe-enterprises-llc.web.app' // Replace with your actual production domain
+      : 'http://localhost:9002',
+  }
 };
 
 export default nextConfig;

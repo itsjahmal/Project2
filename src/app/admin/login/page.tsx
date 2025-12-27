@@ -1,17 +1,59 @@
 
-import { Button } from "@/components/ui/button"
+'use client';
+
+import { useActionState, useEffect } from 'react';
+import { useFormStatus } from 'react-dom';
+import { useRouter } from 'next/navigation';
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import Link from "next/link"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import Link from "next/link";
+import { loginAction } from './_actions/login';
+import { Loader2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+
+const initialState = {
+  type: null,
+  message: "",
+};
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" className="w-full" disabled={pending}>
+      {pending ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Logging in...</> : 'Login'}
+    </Button>
+  );
+}
 
 export default function AdminLoginPage() {
+  const [state, formAction] = useActionState(loginAction, initialState);
+  const router = useRouter();
+  const { toast } = useToast();
+
+  useEffect(() => {
+    if (state.type === 'success') {
+      toast({
+        title: 'Success!',
+        description: state.message,
+      });
+      router.push('/admin');
+    } else if (state.type === 'error') {
+      toast({
+        variant: "destructive",
+        title: 'Login Failed',
+        description: state.message,
+      });
+    }
+  }, [state, router, toast]);
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-background">
       <Card className="mx-auto max-w-sm">
@@ -22,11 +64,12 @@ export default function AdminLoginPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4">
+          <form action={formAction} className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="m@example.com"
                 required
@@ -42,16 +85,13 @@ export default function AdminLoginPage() {
                   Forgot your password?
                 </Link>
               </div>
-              <Input id="password" type="password" required />
+              <Input id="password" name="password" type="password" required />
             </div>
-            {/* TODO: Replace this link with a form submission that calls your auth API */}
-            <Button type="submit" className="w-full" asChild>
-                <Link href="/admin">Login</Link>
-            </Button>
+            <SubmitButton />
             <Button variant="outline" className="w-full">
               Login with Google
             </Button>
-          </div>
+          </form>
         </CardContent>
       </Card>
     </div>
