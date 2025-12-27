@@ -3,12 +3,11 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.moemoeenterprises.com';
 
-  const staticRoutes = [
-    '/',
-    '/about',
-    '/contact',
-    '/quote',
-    '/services',
+  // Main pages
+  const mainPages = ['/', '/about', '/contact', '/quote', '/services'];
+
+  // Service pages, which are higher priority
+  const servicePages = [
     '/services/courier-same-day-delivery-atlanta',
     '/services/deep-cleaning-services-atlanta',
     '/services/house-cleaning-services-atlanta',
@@ -19,12 +18,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/services/office-cleaning-services-atlanta',
   ];
 
-  const sitemapEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
+  const mainEntries: MetadataRoute.Sitemap = mainPages.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: route === '/' ? 1 : 0.8,
   }));
+  
+  const serviceEntries: MetadataRoute.Sitemap = servicePages.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  }));
 
-  return sitemapEntries;
+  return [...mainEntries, ...serviceEntries];
 }
