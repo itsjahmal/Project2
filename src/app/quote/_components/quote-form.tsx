@@ -1,8 +1,7 @@
 
 "use client";
 
-import { useActionState, useEffect } from "react";
-import { useFormStatus } from "react-dom";
+import { useState, useEffect, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -11,97 +10,175 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
-import { submitQuoteForm } from "@/app/_actions/quote";
 import { Loader2 } from "lucide-react";
 
-const initialState = {
-  type: null,
-  errors: null,
-  message: "",
-};
+// Data contract for the API
+interface QuotePayload {
+  service_type: "courier" | "cleaning";
+  name: string;
+  phone: string;
+  email: string;
+  details: string;
+  honeypot: string; // For spam protection
+}
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" className="w-full animate-pulse transition-all duration-300 hover:scale-105 hover:animate-none" disabled={pending}>
-      {pending ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : 'Submit Quote Request'}
-    </Button>
-  );
+interface ApiResponse {
+  success: boolean;
+  message: string;
+  quote_ref?: string;
 }
 
 export function QuoteForm() {
-  const [state, formAction] = useActionState(submitQuoteForm, initialState);
   const { toast } = useToast();
   const searchParams = useSearchParams();
-  const defaultService = searchParams.get('service') === 'cleaning' ? 'Cleaning' : 'Moving';
+  const defaultService = searchParams.get('service') === 'cleaning' ? 'cleaning' : 'courier';
+
+  const [serviceType, setServiceType] = useState<'courier' | 'cleaning'>(defaultService);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [details, setDetails] = useState('');
+  const [honeypot, setHoneypot] = useState('');
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   useEffect(() => {
-    if (state.type === "success") {
+    setServiceType(defaultService);
+  }, [defaultService]);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    setSuccess(null);
+
+    // Basic client-side validation
+    if (!name || !email || !phone || !details) {
+      setError("Please fill out all required fields.");
+      setLoading(false);
+      return;
+    }
+
+    const payload: QuotePayload = {
+      service_type: serviceType,
+      name,
+      phone,
+      email,
+      details,
+      honeypot,
+    };
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/quotes/create.php`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const result: ApiResponse = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "An unknown error occurred.");
+      }
+
+      setSuccess(`Your quote request has been submitted! Your reference is: ${result.quote_ref}`);
       toast({
         title: "Request Received!",
-        description: state.message,
+        description: `Your quote reference is: ${result.quote_ref}`,
       });
-    } else if (state.type === "error") {
-      // If there are specific field errors, join them. Otherwise, use the general message.
-      const errorMessages = state.errors ? Object.values(state.errors).flat().join(' ') : state.message;
+      
+      // Reset form
+      setName('');
+      setEmail('');
+      setPhone('');
+      setDetails('');
+      setHoneypot('');
+
+    } catch (err: any) {
+      const errorMessage = err.message || "Failed to submit quote request. Please try again later.";
+      setError(errorMessage);
       toast({
         variant: "destructive",
-        title: "Error submitting form.",
-        description: errorMessages || "Please review the form for errors and try again.",
+        title: "Submission Error",
+        description: errorMessage,
       });
+    } finally {
+      setLoading(false);
     }
-  }, [state, toast]);
+  };
 
   return (
-    <form action={formAction} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Honeypot field for spam protection - should be hidden */}
+      <div className="absolute w-0 h-0 overflow-hidden">
+        <label htmlFor="website">Website</label>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
+
       <div className="space-y-2">
         <Label>Service Type</Label>
-        <RadioGroup name="serviceType" defaultValue={defaultService} className="flex space-x-4">
+        <RadioGroup
+          name="serviceType"
+          value={serviceType}
+          onValueChange={(value: 'courier' | 'cleaning') => setServiceType(value)}
+          className="flex space-x-4"
+        >
           <div className="flex items-center space-x-2">
-            <RadioGroupItem value="Moving" id="moving" />
-            <Label htmlFor="moving">Moving</Label>
+            <RadioGroupItem value="courier" id="courier" />
+            <Label htmlFor="courier">Courier/Moving</Label>
           </div>
           <div className="flex items-center space-x-2">
-            <RadioGroupItem value="Cleaning" id="cleaning" />
+            <RadioGroupItem value="cleaning" id="cleaning" />
             <Label htmlFor="cleaning">Cleaning</Label>
           </div>
         </RadioGroup>
-        {state?.errors?.serviceType && <p className="text-sm text-destructive">{state.errors.serviceType[0]}</p>}
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="name">Full Name</Label>
-          <Input id="name" name="name" placeholder="John Doe" required />
-          {state?.errors?.name && <p className="text-sm text-destructive">{state.errors.name[0]}</p>}
+          <Input id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="John Doe" required />
         </div>
         <div className="space-y-2">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" name="email" type="email" placeholder="john.doe@example.com" required />
-          {state?.errors?.email && <p className="text-sm text-destructive">{state.errors.email[0]}</p>}
+          <Input id="email" name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="john.doe@example.com" required />
         </div>
       </div>
       
       <div className="space-y-2">
         <Label htmlFor="phone">Phone Number</Label>
-        <Input id="phone" name="phone" type="tel" placeholder="(555) 123-4567" required />
-        {state?.errors?.phone && <p className="text-sm text-destructive">{state.errors.phone[0]}</p>}
+        <Input id="phone" name="phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(555) 123-4567" required />
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="address">Service Address (Origin for moves)</Label>
         <Input id="address" name="address" placeholder="123 Main St, Atlanta, GA 30303" required />
-        {state?.errors?.address && <p className="text-sm text-destructive">{state.errors.address[0]}</p>}
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="details">Project Details</Label>
-        <Textarea id="details" name="details" placeholder="e.g., 'Moving from a 2-bedroom apartment to a house', 'Deep clean for a 1500 sq ft office', etc." rows={5} required />
-        {state?.errors?.details && <p className="text-sm text-destructive">{state.errors.details[0]}</p>}
+        <Textarea id="details" name="details" value={details} onChange={(e) => setDetails(e.target.value)} placeholder="e.g., 'Moving from a 2-bedroom apartment to a house', 'Deep clean for a 1500 sq ft office', etc." rows={5} required />
       </div>
       
       <div>
-        <SubmitButton />
+        <Button type="submit" className="w-full transition-all duration-300 hover:scale-105" disabled={loading}>
+          {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : 'Submit Quote Request'}
+        </Button>
       </div>
     </form>
   );
