@@ -52,8 +52,8 @@ export default function ServicesPage() {
     <>
       <section className="bg-secondary py-16 md:py-24">
         <div className="container mx-auto px-4 text-center md:px-6">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl" data-aos="fade-up">Our Professional Services in Atlanta</h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Our Professional Services in Atlanta</h1>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
             MoeMoe Enterprises offers a complete suite of top-tier moving, courier, and cleaning services tailored to meet the needs of our clients in the Metro Atlanta area.
           </p>
         </div>
@@ -63,7 +63,7 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid gap-12 md:grid-cols-1 lg:grid-cols-3">
             {serviceCategories.map((category, index) => (
-              <Card key={category.title} className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl" data-aos="fade-up" data-aos-delay={index * 150}>
+              <Card key={category.title} className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl">
                 <CardHeader className="p-0">
                   <Image
                     src={category.image.imageUrl}
@@ -102,13 +102,13 @@ export default function ServicesPage() {
       
       <section className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 py-16 text-center md:px-6 md:py-24">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Get Your Free, No-Obligation Quote Today!
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+          <p className="mx-auto mt-4 max-w-2xl">
             Ready to experience the MoeMoe Enterprises difference? Contact us for a customized quote for your cleaning or moving needs in Atlanta.
           </p>
-          <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+          <div className="mt-8">
              <Button size="lg" asChild className="animate-pulse bg-accent text-accent-foreground hover:animate-none hover:bg-accent/90">
               <Link href="/quote">Request a Free Quote</Link>
             </Button>

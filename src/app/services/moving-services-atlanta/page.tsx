@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Package, ShieldCheck, Truck } from 'lucide-react';
+import { ArrowRight, CheckCircle, Package, ShieldCheck, Truck, Building } from 'lucide-react';
 import type { Metadata } from 'next';
 
 import { Button } from '@/components/ui/button';
@@ -42,11 +42,11 @@ export default function MovingServicesPage() {
     <>
       <section className="bg-primary text-primary-foreground py-16 md:py-24">
         <div className="container mx-auto px-4 text-center md:px-6">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl" data-aos="fade-up">Professional Moving Services in Atlanta, GA</h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/90" data-aos="fade-up" data-aos-delay="100">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Professional Moving Services in Atlanta, GA</h1>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/90">
             MoeMoe Enterprises provides reliable, efficient, and careful moving services for homes and businesses across the Atlanta metropolitan area.
           </p>
-          <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+          <div className="mt-8">
             <Button size="lg" asChild className="animate-pulse bg-accent text-accent-foreground hover:animate-none hover:bg-accent/90">
               <Link href={SITE_CONFIG.cta.href}>Request a Free Moving Quote</Link>
             </Button>
@@ -57,7 +57,7 @@ export default function MovingServicesPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-            <div data-aos="fade-right">
+            <div>
               <h2 className="text-3xl font-bold tracking-tight">Atlanta's Choice for Stress-Free Relocation</h2>
               <p className="mt-4 text-muted-foreground">
                 Moving can be a daunting task, but it doesn't have to be. As a premier provider of moving services in Atlanta, MoeMoe Enterprises is dedicated to making your relocation as seamless and efficient as possible. Our deep knowledge of the Atlanta area, from traffic patterns to building regulations, allows us to plan and execute your move with precision.
@@ -76,7 +76,7 @@ export default function MovingServicesPage() {
                 </li>
               </ul>
             </div>
-            <div data-aos="zoom-in">
+            <div>
               <Image
                 src={PlaceHolderImages.generalMoving.imageUrl}
                 alt="A team of professional movers carrying a sofa in Atlanta"
@@ -93,14 +93,14 @@ export default function MovingServicesPage() {
       <section className="py-16 md:py-24 bg-secondary">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">Our Comprehensive Moving Services</h2>
-             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Comprehensive Moving Services</h2>
+             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
               We offer a full suite of services to handle every aspect of your move in Atlanta.
             </p>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-3">
             {movingServices.map((service, index) => (
-              <Card key={service.name} className="flex flex-col" data-aos="fade-up" data-aos-delay={index * 150}>
+              <Card key={service.name} className="flex flex-col">
                 <CardHeader className="items-center">
                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
                         <service.icon className="h-6 w-6" />
@@ -124,11 +124,11 @@ export default function MovingServicesPage() {
        <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">We Also Offer Courier Services</h2>
-             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">We Also Offer Courier Services</h2>
+             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
               Beyond traditional moves, we provide fast and reliable courier services for when you need items delivered urgently across Atlanta.
             </p>
-            <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+            <div className="mt-8">
                  <Button asChild size="lg" variant="outline" className="transition-transform duration-300 hover:scale-105">
                   <Link href="/services/courier-same-day-delivery-atlanta">Explore Same-Day Delivery Atlanta GA <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
@@ -139,13 +139,13 @@ export default function MovingServicesPage() {
 
       <section className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 py-16 text-center md:px-6 md:py-24">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Plan Your Easiest Move Yet
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+          <p className="mx-auto mt-4 max-w-2xl">
             Let our professional team take the weight off your shoulders. Contact MoeMoe Enterprises for a free, detailed quote for our moving services in Atlanta.
           </p>
-          <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+          <div className="mt-8">
              <Button size="lg" asChild className="bg-accent text-accent-foreground transition-transform duration-300 hover:scale-105 hover:bg-accent/90">
               <Link href="/quote?service=moving">Get My Free Moving Quote</Link>
             </Button>

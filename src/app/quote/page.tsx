@@ -24,8 +24,8 @@ export default function QuotePage() {
         <>
           <section className="bg-secondary py-16 md:py-24">
             <div className="container mx-auto px-4 text-center md:px-6">
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl" data-aos="fade-up">Request a Free Quote</h1>
-              <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Request a Free Quote</h1>
+              <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
                 Fill out the form below to get a no-obligation quote for your moving or cleaning needs in Atlanta. We'll get back to you within one business day.
               </p>
             </div>
@@ -33,7 +33,7 @@ export default function QuotePage() {
 
           <section className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6">
-              <Card className="max-w-3xl mx-auto" data-aos="fade-up">
+              <Card className="max-w-3xl mx-auto">
                 <CardHeader>
                   <CardTitle className="text-2xl">Your Quote Request</CardTitle>
                   <CardDescription>

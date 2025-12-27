@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
-import { AOSProvider } from '@/components/aos-provider';
 import { SITE_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
@@ -163,14 +162,12 @@ export default function RootLayout({
         />
       </head>
       <body className={cn('font-body antialiased')} suppressHydrationWarning>
-        <AOSProvider>
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-grow">{children}</main>
             <Footer />
           </div>
           <Toaster />
-        </AOSProvider>
       </body>
     </html>
   );

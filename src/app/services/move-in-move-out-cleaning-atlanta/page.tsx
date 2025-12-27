@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle, Key, Sparkles, Home } from 'lucide-react';
 import type { Metadata } from 'next';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components.../ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SITE_CONFIG } from '@/lib/config';
 
@@ -28,11 +28,11 @@ export default function MoveOutCleaningPage() {
     <>
       <section className="bg-primary text-primary-foreground py-16 md:py-24">
         <div className="container mx-auto px-4 text-center md:px-6">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl" data-aos="fade-up">Atlanta Move-In & Move-Out Cleaning</h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/90" data-aos="fade-up" data-aos-delay="100">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Atlanta Move-In & Move-Out Cleaning</h1>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/90">
             Start fresh or leave it spotless. MoeMoe Enterprises provides comprehensive move-in and move-out cleaning services across Atlanta, GA.
           </p>
-          <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+          <div className="mt-8">
             <Button size="lg" asChild className="animate-pulse bg-accent text-accent-foreground hover:animate-none hover:bg-accent/90">
               <Link href={SITE_CONFIG.cta.href}>Get a Free Moving Clean Quote</Link>
             </Button>
@@ -43,7 +43,7 @@ export default function MoveOutCleaningPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-            <div data-aos="fade-right">
+            <div>
               <h2 className="text-3xl font-bold tracking-tight">The Perfect Start and Finish to Any Move in Atlanta</h2>
               <p className="mt-4 text-muted-foreground">
                 Moving is a huge task. The last thing you want to worry about is scrubbing your old place or cleaning your new one. Our move-in/move-out cleaning service in Atlanta is designed to take that burden off your shoulders. Whether you're a renter aiming to secure your security deposit, a landlord preparing for new tenants, or a homeowner wanting a completely fresh start, we provide the deepest clean possible.
@@ -55,7 +55,7 @@ export default function MoveOutCleaningPage() {
                 <Link href="/services/deep-cleaning-services-atlanta">See What's Included in a Deep Clean <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             </div>
-            <div data-aos="zoom-in">
+            <div>
               <Image
                 src={PlaceHolderImages.eventCleaning.imageUrl}
                 alt="An empty, sparkling clean apartment after move-out cleaning in Atlanta"
@@ -72,7 +72,7 @@ export default function MoveOutCleaningPage() {
       <section className="py-16 md:py-24 bg-secondary">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid gap-16 md:grid-cols-2">
-             <div data-aos="fade-up">
+             <div>
                 <h2 className="text-3xl font-bold tracking-tight text-center">For Renters Leaving Their Atlanta Property</h2>
                 <div className="mt-8 grid gap-8 sm:grid-cols-2">
                     {forRenters.map(item => (
@@ -90,7 +90,7 @@ export default function MoveOutCleaningPage() {
                     ))}
                 </div>
              </div>
-             <div data-aos="fade-up" data-aos-delay="200">
+             <div>
                 <h2 className="text-3xl font-bold tracking-tight text-center">For Landlords & Property Managers</h2>
                 <div className="mt-8 grid gap-8 sm:grid-cols-2">
                     {forLandlords.map(item => (
@@ -115,10 +115,10 @@ export default function MoveOutCleaningPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-3xl mx-auto text-center">
-                 <h2 className="text-3xl font-bold tracking-tight" data-aos="fade-up">A Checklist That Covers Everything</h2>
-                <p className="mt-4 text-muted-foreground" data-aos="fade-up" data-aos-delay="100">Our move-in/move-out cleaning is the most detailed service we offer. We clean places that haven't been touched in years, ensuring the property is in its best possible condition.</p>
+                 <h2 className="text-3xl font-bold tracking-tight">A Checklist That Covers Everything</h2>
+                <p className="mt-4 text-muted-foreground">Our move-in/move-out cleaning is the most detailed service we offer. We clean places that haven't been touched in years, ensuring the property is in its best possible condition.</p>
             </div>
-            <div className="mt-8 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            <div className="mt-8 max-w-4xl mx-auto">
                 <Card>
                     <CardContent className="p-8 grid gap-6 sm:grid-cols-2">
                         <div>
@@ -165,13 +165,13 @@ export default function MoveOutCleaningPage() {
 
       <section className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 py-16 text-center md:px-6 md:py-24">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Make Your Move Easier
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+          <p className="mx-auto mt-4 max-w-2xl">
             Let our professionals handle the cleaning so you can focus on your move. Contact us for a free quote on move-in or move-out cleaning services in Atlanta, GA.
           </p>
-          <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+          <div className="mt-8">
              <Button size="lg" asChild className="bg-accent text-accent-foreground transition-transform duration-300 hover:scale-105 hover:bg-accent/90">
               <Link href="/quote?service=cleaning">Get a Quote for Your Move</Link>
             </Button>

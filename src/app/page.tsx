@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle, MapPin, MessageSquare, Star, ArrowRight, ShieldCheck, Truck, Sparkles, Building } from 'lucide-react';
@@ -65,21 +64,16 @@ export default function Home() {
         <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-primary-foreground">
           <h1
             className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
-            data-aos="fade-up"
           >
             Atlanta's Premier Moving & Cleaning Services
           </h1>
           <p
             className="mt-6 max-w-3xl text-lg md:text-xl"
-            data-aos="fade-up"
-            data-aos-delay="200"
           >
             Top-rated residential & commercial cleaning, local moving, and same-day courier services across Metro Atlanta.
           </p>
           <div
             className="mt-10"
-            data-aos="fade-up"
-            data-aos-delay="400"
           >
             <Button size="lg" asChild className="glow-on-hover bg-accent text-accent-foreground transition-transform duration-300 hover:scale-105 hover:bg-accent/90">
               <Link href={SITE_CONFIG.cta.href}>Request a Free Quote</Link>
@@ -92,14 +86,14 @@ export default function Home() {
       <section className="bg-background py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">Your All-in-One Solution in Atlanta, GA</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Your All-in-One Solution in Atlanta, GA</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
               One company for all your home and business service needs. We specialize in professional cleaning, moving, and courier solutions across Metro Atlanta.
             </p>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
              {services.map((service, index) => (
-              <Card key={service.name} className="overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col" data-aos="fade-up" data-aos-delay={index * 150}>
+              <Card key={service.name} className="overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col">
                 <CardHeader className="items-center">
                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
                       <service.icon className="h-8 w-8" />
@@ -122,14 +116,14 @@ export default function Home() {
       <section className="bg-secondary py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">Why Atlanta Trusts MoeMoe Enterprises</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Why Atlanta Trusts MoeMoe Enterprises</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
               Reliability, quality, and customer satisfaction are at the core of everything we do. We're your neighbors, dedicated to serving the Atlanta community.
             </p>
           </div>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {trustSignals.map((feature, index) => (
-              <div key={feature.title} className="text-center" data-aos="fade-up" data-aos-delay={index * 100}>
+              <div key={feature.title} className="text-center">
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
                   <feature.icon className="h-8 w-8" />
                 </div>
@@ -145,16 +139,14 @@ export default function Home() {
       <section className="bg-background py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">What Our Atlanta Clients Say</h2>
-             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">What Our Atlanta Clients Say</h2>
+             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
              Our reputation is built on the satisfaction of our customers.
             </p>
           </div>
           <Carousel
             opts={{ align: "start", loop: true }}
             className="mx-auto mt-12 w-full max-w-6xl"
-            data-aos="fade-up"
-            data-aos-delay="200"
           >
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
@@ -191,12 +183,12 @@ export default function Home() {
       <section className="bg-secondary py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">Frequently Asked Questions</h2>
-            <p className="mx-auto mt-4 text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Frequently Asked Questions</h2>
+            <p className="mx-auto mt-4 text-muted-foreground">
               Find answers to common questions about our moving and cleaning services in the Atlanta area.
             </p>
           </div>
-          <Accordion type="single" collapsible className="mt-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+          <Accordion type="single" collapsible className="mt-12 max-w-3xl mx-auto">
             {FAQ.map((item, index) => (
               <AccordionItem value={`item-${index}`} key={index}>
                 <AccordionTrigger className="text-left font-bold">{item.question}</AccordionTrigger>
@@ -212,13 +204,13 @@ export default function Home() {
       {/* Final CTA */}
       <section className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 py-16 text-center md:px-6 md:py-24">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Ready for a Smooth Move or a Spotless Space?
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+          <p className="mx-auto mt-4 max-w-2xl">
             Contact us today for a free, no-obligation quote. Let MoeMoe Enterprises make your next moving or cleaning project in Atlanta a breeze.
           </p>
-          <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+          <div className="mt-8">
              <Button size="lg" asChild className="animate-pulse bg-accent text-accent-foreground hover:animate-none hover:bg-accent/90">
               <Link href={SITE_CONFIG.cta.href}>Request a Free Quote</Link>
             </Button>

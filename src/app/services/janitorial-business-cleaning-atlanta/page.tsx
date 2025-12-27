@@ -27,11 +27,11 @@ export default function JanitorialPage() {
     <>
       <section className="bg-primary text-primary-foreground py-16 md:py-24">
         <div className="container mx-auto px-4 text-center md:px-6">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl" data-aos="fade-up">Atlanta Janitorial & Business Cleaning Services</h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/90" data-aos="fade-up" data-aos-delay="100">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Atlanta Janitorial & Business Cleaning Services</h1>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/90">
             Reliable, professional, and thorough business cleaning services in Atlanta, GA. We keep your commercial space immaculate so you can focus on what you do best.
           </p>
-          <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+          <div className="mt-8">
             <Button size="lg" asChild className="animate-pulse bg-accent text-accent-foreground hover:animate-none hover:bg-accent/90">
               <Link href={SITE_CONFIG.cta.href}>Get a Free Business Cleaning Quote</Link>
             </Button>
@@ -42,7 +42,7 @@ export default function JanitorialPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-            <div data-aos="fade-right">
+            <div>
               <h2 className="text-3xl font-bold tracking-tight">The Mark of a Professional Atlanta Business</h2>
               <p className="mt-4 text-muted-foreground">
                 The cleanliness of your commercial space is a direct reflection of your brand. A clean, well-maintained environment not only impresses clients but also boosts employee morale and productivity. MoeMoe Enterprises offers comprehensive janitorial services in Atlanta designed to meet the unique needs of your business. We understand that every facility has different requirements, which is why we don’t offer a one-size-fits-all solution.
@@ -54,7 +54,7 @@ export default function JanitorialPage() {
                 <Link href="/services/office-cleaning-services-atlanta">See Our Specialized Office Cleaning Services <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             </div>
-            <div data-aos="zoom-in">
+            <div>
               <Image
                 src={PlaceHolderImages.commercialCleaning.imageUrl}
                 alt="A clean and modern office space after janitorial services in Atlanta"
@@ -71,15 +71,15 @@ export default function JanitorialPage() {
       <section className="py-16 md:py-24 bg-secondary">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center">
-            <Building className="mx-auto h-12 w-12 text-primary" data-aos="zoom-in" />
-            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">Business & Janitorial Services for Every Atlanta Industry</h2>
-             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+            <Building className="mx-auto h-12 w-12 text-primary" />
+            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Business & Janitorial Services for Every Atlanta Industry</h2>
+             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
               Our experienced team is equipped to handle the specific cleaning needs of various commercial environments across Metro Atlanta.
             </p>
           </div>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((industry, index) => (
-              <Card key={industry.name} className="text-center" data-aos="fade-up" data-aos-delay={index * 100}>
+              <Card key={industry.name} className="text-center">
                 <CardHeader>
                   <CardTitle>{industry.name}</CardTitle>
                 </CardHeader>
@@ -95,7 +95,7 @@ export default function JanitorialPage() {
        <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-             <div data-aos="zoom-in">
+             <div>
               <Image
                 src={PlaceHolderImages.aboutStory.imageUrl}
                 alt="The professional and friendly janitorial team in Atlanta"
@@ -105,7 +105,7 @@ export default function JanitorialPage() {
                 data-ai-hint={PlaceHolderImages.aboutStory.imageHint}
               />
             </div>
-            <div data-aos="fade-left">
+            <div>
               <h2 className="text-3xl font-bold tracking-tight">Our Commitment to Your Business</h2>
               <p className="mt-4 text-muted-foreground">When you choose MoeMoe Enterprises for your janitorial services in Atlanta, you get more than just a clean facility. You get a dedicated partner committed to excellence.</p>
               <ul className="mt-6 space-y-4">
@@ -129,13 +129,13 @@ export default function JanitorialPage() {
 
       <section className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 py-16 text-center md:px-6 md:py-24">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Elevate Your Business Environment
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+          <p className="mx-auto mt-4 max-w-2xl">
             Show your clients and employees you care with a professionally maintained facility. Contact us for a free, no-obligation quote for our business cleaning services in Atlanta, GA.
           </p>
-          <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+          <div className="mt-8">
              <Button size="lg" asChild className="bg-accent text-accent-foreground transition-transform duration-300 hover:scale-105 hover:bg-accent/90">
               <Link href="/quote?service=cleaning">Get a Commercial Quote</Link>
             </Button>

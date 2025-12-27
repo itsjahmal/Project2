@@ -20,8 +20,8 @@ export default function ContactPage() {
     <>
       <section className="bg-secondary py-16 md:py-24">
         <div className="container mx-auto px-4 text-center md:px-6">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl" data-aos="fade-up">Get In Touch</h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Get In Touch</h1>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
             We're here to answer any questions you may have about our Atlanta services. Reach out to us and we'll respond as soon as we can.
           </p>
         </div>
@@ -33,7 +33,7 @@ export default function ContactPage() {
             <div className="space-y-8 lg:col-span-2">
               <h2 className="text-2xl font-bold tracking-tight">Contact Information</h2>
               {contactDetails.map((detail, index) => (
-                <div key={detail.title} className="flex items-start gap-4" data-aos="fade-up" data-aos-delay={index * 100}>
+                <div key={detail.title} className="flex items-start gap-4">
                   <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                     <detail.icon className="h-6 w-6" />
                   </div>
@@ -47,7 +47,7 @@ export default function ContactPage() {
               ))}
             </div>
             <div className="lg:col-span-3">
-              <Card className="p-6 sm:p-8" data-aos="fade-up">
+              <Card className="p-6 sm:p-8">
                 <CardHeader>
                   <CardTitle className="text-2xl">Send us a message</CardTitle>
                 </CardHeader>

@@ -38,11 +38,11 @@ export default function HouseCleaningPage() {
     <>
       <section className="bg-primary text-primary-foreground py-16 md:py-24">
         <div className="container mx-auto px-4 text-center md:px-6">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl" data-aos="fade-up">Atlanta House Cleaning Services</h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/90" data-aos="fade-up" data-aos-delay="100">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Atlanta House Cleaning Services</h1>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/90">
             Reclaim your time and enjoy a spotless home with MoeMoe Enterprises. We provide reliable and thorough home cleaning services across the Atlanta, GA metro area.
           </p>
-          <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+          <div className="mt-8">
             <Button size="lg" asChild className="animate-pulse bg-accent text-accent-foreground hover:animate-none hover:bg-accent/90">
               <Link href={SITE_CONFIG.cta.href}>Request a Free Cleaning Quote</Link>
             </Button>
@@ -53,7 +53,7 @@ export default function HouseCleaningPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-            <div data-aos="fade-right">
+            <div>
               <h2 className="text-3xl font-bold tracking-tight">Your Trusted Partner for Home Cleaning in Atlanta</h2>
               <p className="mt-4 text-muted-foreground">
                 Life in Atlanta is busy. Between work, family, and social commitments, finding time to keep your home consistently clean can be a challenge. That's where MoeMoe Enterprises comes in. As a leading provider of house cleaning services in Atlanta, we deliver the professional touch you need to maintain a beautiful and healthy living environment without sacrificing your valuable free time.
@@ -65,7 +65,7 @@ export default function HouseCleaningPage() {
                 <Link href="/about">Learn More About Our Company Values <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             </div>
-            <div data-aos="zoom-in">
+            <div>
               <Image
                 src={PlaceHolderImages.residentialCleaning.imageUrl}
                 alt="A bright and clean living room after professional house cleaning services in Atlanta"
@@ -82,14 +82,14 @@ export default function HouseCleaningPage() {
       <section className="py-16 md:py-24 bg-secondary">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">Our Atlanta Home Cleaning Services</h2>
-             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground" data-aos="fade-up" data-aos-delay="100">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Atlanta Home Cleaning Services</h2>
+             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
               We offer a range of cleaning packages to meet your specific needs.
             </p>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-1 lg:grid-cols-3">
             {serviceTiers.map((tier, index) => (
-              <Card key={tier.name} className="flex flex-col" data-aos="fade-up" data-aos-delay={index * 150}>
+              <Card key={tier.name} className="flex flex-col">
                 <CardHeader>
                   <CardTitle className="text-2xl text-center">{tier.name}</CardTitle>
                 </CardHeader>
@@ -122,7 +122,7 @@ export default function HouseCleaningPage() {
        <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-            <div data-aos="zoom-in">
+            <div>
               <Image
                 src={PlaceHolderImages.avatar2.imageUrl}
                 alt="A happy homeowner in Atlanta"
@@ -132,7 +132,7 @@ export default function HouseCleaningPage() {
                 data-ai-hint={PlaceHolderImages.avatar2.imageHint}
               />
             </div>
-            <div data-aos="fade-left">
+            <div>
               <ShieldCheck className="h-12 w-12 text-primary" />
               <h2 className="mt-4 text-3xl font-bold tracking-tight">Why Choose MoeMoe Enterprises for Your Atlanta Home?</h2>
               <ul className="mt-6 space-y-4">
@@ -156,13 +156,13 @@ export default function HouseCleaningPage() {
 
       <section className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 py-16 text-center md:px-6 md:py-24">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" data-aos="fade-up">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Enjoy a Cleaner Home Without the Hassle
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+          <p className="mx-auto mt-4 max-w-2xl">
             Let us handle the dirty work. Contact us today for a free, no-obligation quote for our professional house cleaning services in Atlanta, GA.
           </p>
-          <div className="mt-8" data-aos="fade-up" data-aos-delay="200">
+          <div className="mt-8">
              <Button size="lg" asChild className="bg-accent text-accent-foreground transition-transform duration-300 hover:scale-105 hover:bg-accent/90">
               <Link href="/quote?service=cleaning">Get My Free Quote</Link>
             </Button>
