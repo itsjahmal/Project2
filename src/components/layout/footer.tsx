@@ -61,12 +61,6 @@ export function Footer() {
         </div>
         <div className="mt-10 border-t pt-6 text-center text-sm text-muted-foreground">
           <p>{SITE_CONFIG.copyright}</p>
-           <div className="mt-2">
-                <Link href="/admin/login" className="inline-flex items-center gap-1.5 text-xs transition-colors hover:text-primary">
-                    <UserCog className="h-3 w-3" />
-                    Admin Login
-                </Link>
-            </div>
         </div>
       </div>
     </footer>
