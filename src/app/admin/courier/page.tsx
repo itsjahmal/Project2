@@ -1,4 +1,3 @@
-
 'use client';
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
@@ -22,11 +21,12 @@ import { MoreHorizontal, PlusCircle, ServerCrash } from "lucide-react";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { getCourierOps } from '../_actions/courier';
 
 
 type CourierStatus = 'Assigned' | 'In Transit' | 'Delivered' | 'Delayed';
 
-type CourierOp = {
+export type CourierOp = {
     id: string;
     quote_id: string;
     driver_id: string;
@@ -60,21 +60,11 @@ export default function CourierOpsPage() {
      useEffect(() => {
         async function fetchCourierOps() {
             try {
-                // The rewrite in next.config.js will proxy this to https://api.moemoeenterprise.com/courier/list.php
-                const response = await fetch('/api/courier/list.php', {
-                    credentials: 'include'
-                });
-                
-                if (!response.ok) {
-                    const errorData = await response.json().catch(() => null);
-                    throw new Error(errorData?.message || `Failed to fetch courier operations. Status: ${response.status}`);
-                }
-
-                const data = await response.json();
-                if (data.success) {
-                    setCourierOps(data.operations);
+                const result = await getCourierOps();
+                if (result.success && result.operations) {
+                    setCourierOps(result.operations);
                 } else {
-                    throw new Error(data.message || "API returned an error.");
+                    throw new Error(result.message || "API returned an error.");
                 }
             } catch (e: any) {
                 setError(e.message);
