@@ -38,6 +38,7 @@ export function QuoteForm() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [details, setDetails] = useState('');
+  const [address, setAddress] = useState('');
   const [honeypot, setHoneypot] = useState('');
 
   const [loading, setLoading] = useState(false);
@@ -55,7 +56,7 @@ export function QuoteForm() {
     setSuccess(null);
 
     // Basic client-side validation
-    if (!name || !email || !phone || !details) {
+    if (!name || !email || !phone || !details || !address) {
       setError("Please fill out all required fields.");
       setLoading(false);
       return;
@@ -66,13 +67,13 @@ export function QuoteForm() {
       name,
       phone,
       email,
-      details,
+      details: `Address: ${address}\n\nDetails: ${details}`,
       honeypot,
     };
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/quotes/create.php`,
+        `/api/quotes/create.php`,
         {
           method: 'POST',
           headers: {
@@ -99,6 +100,7 @@ export function QuoteForm() {
       setEmail('');
       setPhone('');
       setDetails('');
+      setAddress('');
       setHoneypot('');
 
     } catch (err: any) {
@@ -167,7 +169,7 @@ export function QuoteForm() {
 
       <div className="space-y-2">
         <Label htmlFor="address">Service Address (Origin for moves)</Label>
-        <Input id="address" name="address" placeholder="123 Main St, Atlanta, GA 30303" required />
+        <Input id="address" name="address" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="123 Main St, Atlanta, GA 30303" required />
       </div>
 
       <div className="space-y-2">
