@@ -35,58 +35,67 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-// MOCK DATA - Replace with API call
+// MOCK DATA based on the provided SQL schema
 const quotes = [
     {
-        id: 'Q-001',
-        name: 'John Doe',
-        email: 'john.doe@example.com',
-        service: 'Moving',
-        status: 'Pending',
-        createdAt: '2024-05-01',
-        amount: 550.00
-    },
-    {
-        id: 'Q-002',
-        name: 'Jane Smith',
-        email: 'jane.smith@example.com',
-        service: 'Cleaning',
+        id: 'QT-001',
+        name: 'Liam Johnson',
+        email: 'liam@example.com',
+        service_type: 'Moving',
         status: 'Approved',
-        createdAt: '2024-05-02',
+        created_at: '2023-06-23',
         amount: 250.00
     },
     {
-        id: 'Q-003',
-        name: 'Alice Johnson',
-        email: 'alice.j@example.com',
-        service: 'Courier',
-        status: 'Completed',
-        createdAt: '2024-04-28',
-        amount: 75.00
-    },
-        {
-        id: 'Q-004',
-        name: 'Mike Brown',
-        email: 'mike.b@example.com',
-        service: 'Moving',
+        id: 'QT-002',
+        name: 'Olivia Smith',
+        email: 'olivia@example.com',
+        service_type: 'Cleaning',
         status: 'Declined',
-        createdAt: '2024-05-03',
-        amount: 1200.00
+        created_at: '2023-06-24',
+        amount: 150.00
+    },
+    {
+        id: 'QT-003',
+        name: 'Noah Williams',
+        email: 'noah@example.com',
+        service_type: 'Moving',
+        status: 'Pending',
+        created_at: '2023-06-25',
+        amount: 750.50
+    },
+    {
+        id: 'QT-004',
+        name: 'Emma Brown',
+        email: 'emma@example.com',
+        service_type: 'Courier',
+        status: 'Completed',
+        created_at: '2023-06-26',
+        amount: 45.00
+    },
+    {
+        id: 'QT-005',
+        name: 'James Jones',
+        email: 'james@example.com',
+        service_type: 'Cleaning',
+        status: 'Pending',
+        created_at: '2023-06-27',
+        amount: 320.00
     }
 ];
 
-const statusStyles = {
-    Pending: 'bg-yellow-100 text-yellow-800',
-    Approved: 'bg-green-100 text-green-800',
-    Completed: 'bg-blue-100 text-blue-800',
-    Declined: 'bg-red-100 text-red-800',
+const statusStyles: { [key: string]: string } = {
+    Pending: 'bg-yellow-100 text-yellow-800 border-yellow-300',
+    Approved: 'bg-green-100 text-green-800 border-green-300',
+    Completed: 'bg-blue-100 text-blue-800 border-blue-300',
+    Declined: 'bg-red-100 text-red-800 border-red-300',
 }
 
 export default function QuotesPage() {
     // TODO: Add state management and API calls here
     // Example: const [quotes, setQuotes] = useState([]);
     // useEffect(() => {
-    //   fetch('/api/quotes').then(res => res.json()).then(data => setQuotes(data));
+    //   fetch('/api/quotes').then(res => res.json()).then(data => setQuotes(data.quotes));
     // }, []);
 
   return (
@@ -100,8 +109,8 @@ export default function QuotesPage() {
             <TabsTrigger value="all">All</TabsTrigger>
             <TabsTrigger value="pending">Pending</TabsTrigger>
             <TabsTrigger value="approved">Approved</TabsTrigger>
-            <TabsTrigger value="declined" className="hidden sm:flex">
-              Declined
+            <TabsTrigger value="completed" className="hidden sm:flex">
+              Completed
             </TabsTrigger>
           </TabsList>
           <div className="ml-auto flex items-center gap-2">
@@ -115,7 +124,7 @@ export default function QuotesPage() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>Filter by</DropdownMenuLabel>
+                <DropdownMenuLabel>Filter by Service</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuCheckboxItem checked>
                   Moving
@@ -169,19 +178,20 @@ export default function QuotesPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
+                  {/* TODO: Replace 'quotes' with data fetched from your API */}
                   {quotes.map((quote) => (
                     <TableRow key={quote.id}>
                         <TableCell>
                             <div className="font-medium">{quote.name}</div>
-                            <div className="text-sm text-muted-foreground">{quote.email}</div>
+                            <div className="hidden text-sm text-muted-foreground md:inline">{quote.email}</div>
                         </TableCell>
-                        <TableCell className="hidden md:table-cell">{quote.service}</TableCell>
+                        <TableCell className="hidden md:table-cell">{quote.service_type}</TableCell>
                         <TableCell className="hidden md:table-cell">
                              <Badge variant="outline" className={statusStyles[quote.status as keyof typeof statusStyles]}>
                                 {quote.status}
                             </Badge>
                         </TableCell>
-                        <TableCell className="hidden md:table-cell">{quote.createdAt}</TableCell>
+                        <TableCell className="hidden md:table-cell">{quote.created_at}</TableCell>
                         <TableCell className="text-right">${quote.amount.toFixed(2)}</TableCell>
                          <TableCell>
                         <DropdownMenu>
@@ -197,7 +207,7 @@ export default function QuotesPage() {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
                             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem>View Details</DropdownMenuItem>
                             <DropdownMenuItem>Approve</DropdownMenuItem>
                             <DropdownMenuItem>Decline</DropdownMenuItem>
                             <DropdownMenuSeparator />
@@ -212,7 +222,7 @@ export default function QuotesPage() {
             </CardContent>
             <CardFooter>
               <div className="text-xs text-muted-foreground">
-                Showing <strong>1-4</strong> of <strong>32</strong>{' '}
+                Showing <strong>1-5</strong> of <strong>32</strong>{' '}
                 quotes
               </div>
             </CardFooter>
