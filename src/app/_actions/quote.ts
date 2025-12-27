@@ -50,7 +50,7 @@ export async function submitQuoteForm(prevState: any, formData: FormData) {
 
     return {
       type: "success" as const,
-      message: "Thank you for your quote request! We will review the details and get back to you within 24 hours.",
+      message: "Thank you for your request! A member of our team will be in touch with you shortly.",
     };
 
   } catch (error) {

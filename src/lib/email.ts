@@ -70,7 +70,7 @@ export async function sendCustomerQuoteConfirmationEmail(data: QuoteData) {
   </div>
   <div style="padding: 20px;">
     <h1 style="color: #041F66; font-size: 24px; margin-top: 0;">Thank You, ${data.name.split(' ')[0]}!</h1>
-    <p>We have received your request for a quote and will get back to you within 24 hours. Here are the details you submitted:</p>
+    <p>We have successfully received your request for a quote. A member of our customer support team will review your details and reach out to you shortly. Here is a summary of your request:</p>
     <ul style="list-style: none; padding: 0; margin: 20px 0; background-color: #f9f9f9; border-radius: 5px; padding: 15px;">
       <li style="padding: 5px 0;"><strong>Service Type:</strong> ${data.serviceType}</li>
       <li style="padding: 5px 0;"><strong>Address:</strong> ${data.address}</li>
