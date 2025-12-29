@@ -1,63 +1,14 @@
-# Firebase Studio
+# MoeMoe Enterprises - Static HTML Site
 
-This is a **NextJS starter project built in Firebase Studio**.  
-It provides a simple, modern setup to help developers quickly start building scalable web applications.
+This project now includes a **standalone multi-page HTML site** for MoeMoe Enterprises that can be opened directly in a browser without a build step. The pages highlight moving, cleaning, and courier services with testimonials, FAQs, and quote/contact forms.
 
----
+## Viewing the site
 
-## 📌 Getting Started
+1. Open `public/index.html` for the home page, `public/about.html` for the company story, `public/services.html` for offerings, or `public/contact.html` for quotes and inquiries.
+2. The accompanying styles and interactions live in `public/styles.css` and `public/script.js`.
 
-To begin, open the main application file:
+## Notes
 
-src/app/page.tsx
-
-
-Start editing this file to customize your application.
-
----
-
-## 🚀 Installation & Development
-
-Install dependencies:
-
-```bash
-npm install
-Run the development server:
-
-npm run dev
-
-
-Build for production:
-
-npm run build
-
-
-Start production server:
-
-npm run start
-
-🛠 Tech Stack
-
-Next.js (App Router)
-
-React
-
-TypeScript
-
-Firebase
-
-📂 Project Structure
-src/
- └── app/
-     └── page.tsx   # Main entry page
-
-👨‍💻 Developer Info
-
-Developer: Rojam
-
-Version: 2.0
-
-📄 Notes
-
-This starter is intended for rapid development and easy Firebase integration.
-Feel free to extend it with authentication, database, hosting, or other Firebase services.
+- Colors, typography, and layout follow the provided blueprint (deep blue primary, cyan accents, light gray background, Poppins/Inter fonts).
+- The testimonial slider and FAQ accordion are powered by lightweight vanilla JavaScript.
+- You can still use the existing Next.js setup if desired, but the static HTML page works on any basic web server or by opening the file locally.
