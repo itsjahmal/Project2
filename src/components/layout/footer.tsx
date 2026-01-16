@@ -37,15 +37,15 @@ export function Footer() {
             <h4 className="font-headline text-md mb-4 font-semibold">Contact Us</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary" />
+                <Phone className="h-5 w-5 text-primary" />
                 <a href={`tel:${SITE_CONFIG.phone.replace(/\D/g, '')}`} className="text-muted-foreground transition-colors hover:text-primary">{SITE_CONFIG.phone}</a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-primary" />
+                <Mail className="h-5 w-5 text-primary" />
                 <a href={`mailto:${SITE_CONFIG.email}`} className="text-muted-foreground transition-colors hover:text-primary">{SITE_CONFIG.email}</a>
               </li>
               <li className="flex items-center gap-3">
-                <FileText className="h-4 w-4 text-primary" />
+                <FileText className="h-5 w-5 text-primary" />
                 <span className="text-muted-foreground">Fax: {SITE_CONFIG.fax}</span>
               </li>
             </ul>
