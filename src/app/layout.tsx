@@ -13,14 +13,14 @@ export const metadata: Metadata = {
   },
   description: 'Top-rated moving and cleaning services in Atlanta, GA. We offer residential & commercial cleaning, plus local moving and courier services. Get a free quote!',
   keywords: ['cleaning services atlanta', 'house cleaning atlanta', 'commercial cleaning atlanta', 'office cleaning services atlanta ga', 'moving services atlanta', 'local movers atlanta ga', 'courier services atlanta'],
-  metadataBase: new URL('https://www.moemoeenterprises.com'),
+  metadataBase: new URL('https://moemoeenterprise.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: `Top Moving & Cleaning Services in Atlanta | ${SITE_CONFIG.name}`,
     description: 'Your trusted partner for professional moving and cleaning in Metro Atlanta.',
-    url: 'https://www.moemoeenterprises.com',
+    url: 'https://moemoeenterprise.com',
     siteName: SITE_CONFIG.name,
     images: [
       {
@@ -55,10 +55,10 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.moemoeenterprises.com/#localbusiness",
+  "@id": "https://moemoeenterprise.com/#localbusiness",
   "name": "Moemoe Enterprises LLC",
   "description": "Moemoe Enterprises LLC provides professional residential cleaning, commercial cleaning, moving, and courier services across the Atlanta Metro area. Request a free quote today.",
-  "url": "https://www.moemoeenterprises.com",
+  "url": "https://moemoeenterprise.com",
   "telephone": "+1-(404) 375-9495",
   "priceRange": "$$",
   "address": {
@@ -132,7 +132,7 @@ const jsonLd = {
     "name": "Request a Free Quote",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://www.moemoeenterprises.com/request-a-quote",
+      "urlTemplate": "https://moemoeenterprise.com/quote",
       "actionPlatform": [
         "http://schema.org/DesktopWebPlatform",
         "http://schema.org/MobileWebPlatform"
