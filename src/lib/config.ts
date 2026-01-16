@@ -1,6 +1,6 @@
 
 export const SITE_CONFIG = {
-  name: 'MoeMoe Enterprises',
+  name: 'MoeMoe Enterprises LLC',
   phone: '(404) 375-9495',
   email: 'info@moemoeenterprise.com',
   fax: '678 813 2150',

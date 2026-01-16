@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Building, Users, Clock } from 'lucide-react';
@@ -9,7 +10,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SITE_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'Office Cleaning Services in Atlanta, GA | MoeMoe Enterprises',
+  title: 'Office Cleaning Services in Atlanta, GA',
   description: 'Professional office cleaning services in Atlanta, GA. We provide reliable, scheduled cleaning to keep your workplace healthy and productive. Get a free quote!',
 };
 

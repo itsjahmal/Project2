@@ -10,7 +10,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SITE_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'House Cleaning Services in Atlanta, GA | MoeMoe Enterprises',
+  title: 'House Cleaning Services in Atlanta, GA',
   description: 'Professional house cleaning services in Atlanta, GA. We offer reliable, recurring home cleaning services to keep your space spotless. Get your free quote today!',
 };
 

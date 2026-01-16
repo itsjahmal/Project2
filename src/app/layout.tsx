@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -8,7 +9,7 @@ import { SITE_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: {
-    default: `Top Moving & Cleaning Services in Atlanta | ${SITE_CONFIG.name}`,
+    default: `${SITE_CONFIG.name} | Top Moving & Cleaning Services in Atlanta`,
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: 'Top-rated moving and cleaning services in Atlanta, GA. We offer residential & commercial cleaning, plus local moving and courier services. Get a free quote!',
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: `Top Moving & Cleaning Services in Atlanta | ${SITE_CONFIG.name}`,
+    title: `${SITE_CONFIG.name} | Top Moving & Cleaning Services in Atlanta`,
     description: 'Your trusted partner for professional moving and cleaning in Metro Atlanta.',
     url: 'https://moemoeenterprise.com',
     siteName: SITE_CONFIG.name,
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `Top Moving & Cleaning Services in Atlanta | ${SITE_CONFIG.name}`,
+    title: `${SITE_CONFIG.name} | Top Moving & Cleaning Services in Atlanta`,
     description: 'Top-rated moving and cleaning services for the Metro Atlanta area. Get your free quote!',
     images: ['https://i.imgur.com/yv4A8GD.jpeg'],
   },
@@ -56,8 +57,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://moemoeenterprise.com/#localbusiness",
-  "name": "Moemoe Enterprises LLC",
-  "description": "Moemoe Enterprises LLC provides professional residential cleaning, commercial cleaning, moving, and courier services across the Atlanta Metro area. Request a free quote today.",
+  "name": "MoeMoe Enterprises LLC",
+  "description": "MoeMoe Enterprises LLC provides professional residential cleaning, commercial cleaning, moving, and courier services across the Atlanta Metro area. Request a free quote today.",
   "url": "https://moemoeenterprise.com",
   "telephone": "+1-(404) 375-9495",
   "priceRange": "$$",
@@ -91,7 +92,7 @@ const jsonLd = {
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Moemoe Enterprises Services",
+    "name": "MoeMoe Enterprises LLC Services",
     "itemListElement": [
       {
         "@type": "Offer",
