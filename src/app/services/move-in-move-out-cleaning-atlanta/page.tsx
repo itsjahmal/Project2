@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Key, Sparkles, Home } from 'lucide-react';
@@ -9,7 +10,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SITE_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'Move-In & Move-Out Cleaning Services in Atlanta, GA | MoeMoe',
+  title: 'Move-In & Move-Out Cleaning Services in Atlanta, GA',
   description: 'Ensure a spotless transition with our move-in/move-out cleaning services in Atlanta, GA. Perfect for tenants, landlords, and homeowners. Get your free quote!',
 };
 

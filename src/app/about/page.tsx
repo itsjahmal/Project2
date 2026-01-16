@@ -1,10 +1,11 @@
+
 import Image from 'next/image';
 import { Award, Heart, Users, MapPin } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About MoeMoe Enterprises - Atlanta\'s Trusted Movers & Cleaners',
+  title: 'About Us - Atlanta\'s Trusted Movers & Cleaners',
   description: 'Learn about our story, mission, and the values that make us a leading moving and cleaning service provider in Metro Atlanta.',
 };
 

@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Sparkles, Star, Home } from 'lucide-react';
@@ -9,7 +10,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { SITE_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'Atlanta Deep Cleaning Services | MoeMoe Enterprises',
+  title: 'Atlanta Deep Cleaning Services',
   description: 'Revitalize your space with our thorough deep cleaning services in Atlanta, GA. We tackle grime and dirt for a truly spotless home. Get your free deep cleaning quote!',
 };
 

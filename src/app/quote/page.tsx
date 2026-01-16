@@ -1,6 +1,4 @@
 
-'use client';
-
 import { Suspense } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { QuoteForm } from './_components/quote-form';
