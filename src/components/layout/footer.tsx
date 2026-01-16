@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, Phone, Mail, FileText, UserCog } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Phone, Mail, FileText } from 'lucide-react';
 import { SITE_CONFIG } from '@/lib/config';
 import { Logo } from '@/components/icons/logo';
 
